@@ -62,7 +62,13 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container id="third">
+    <v-container class="third">
+      <h1>NEWS</h1>
+      <v-row>
+        <v-col></v-col>
+      </v-row>
+    </v-container>
+    <v-container id="forth">
       <v-row>
         <v-col class="text-center" cols="12" md="6" order-md="2">
           <img src="https://picsum.photos/450/600/?random=10">
