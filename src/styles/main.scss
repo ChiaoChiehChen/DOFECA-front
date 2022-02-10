@@ -1,0 +1,36 @@
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+  list-style: none;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+};
+
+// $grid-breakpoints: (
+//   'xs': 0,
+//   'sm': 340px,
+//   'md': 540px,
+//   'lg': 800px - 24px,
+//   'xl': 1280px - 24px
+// );
+
+// $primary: #c004;
+$font:'Nunito Sans', sans-serif;
+
+// container
+// $containerWithMd:720px;
+// $containerWithLg:1140px;
+$containerWithXl:1320px;
+
+// 斷點
+$breakpoint-sm:600px;
+$breakpoint-md:960px;
+$breakpoint-lg:1264px;
+$breakpoint-xl:1904px;
+// $breakpoint-xxl:1400px;
+
+.container{
+  @include xl{
+    width: $containerWithXl;
+  }
+}

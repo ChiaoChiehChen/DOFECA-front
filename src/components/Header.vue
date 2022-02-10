@@ -1,7 +1,7 @@
 <template>
   <nav>
     <v-app-bar id="header" class="px-md-10" app color="white" height="80" prominent elevate-on-scroll>
-      <v-app-bar-nav-icon class="hidden-md-and-up mt-3" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon class=" hidden-md-and-up mt-3" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <router-link to="/" class="a">
         <v-toolbar-title class="logo">
@@ -11,8 +11,8 @@
 
       <v-toolbar-items class="hidden-md-and-down">
         <v-row align="center" justify="space-around">
-          <v-col >
-            <v-btn class="nav-btn subtitle-1" plain text to="/product">All products</v-btn>
+          <v-col>
+            <v-btn class="nav-btn subtitle-1" color="#9d8460" plain text to="/product">All products</v-btn>
             <v-btn class="subtitle-1" retain-focus-on-click text >News</v-btn>
             <v-btn class="subtitle-1" text to="/about">About Us</v-btn>
           </v-col>

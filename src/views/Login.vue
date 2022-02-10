@@ -3,8 +3,8 @@
     <h1 class="text-center">Welcome back</h1>
     <div class="login_con">
       <v-row class="mt-md-5 mt-lg-16">
-        <v-col cols="12" md="3"></v-col>
-        <v-col class="d-flex justify-center align-center" cols="12" md="3" >
+        <v-col cols="12" lg="2"></v-col>
+        <v-col class="d-flex justify-center align-center" cols="12" lg="4" >
           <v-hover>
             <template v-slot:default="{ hover }">
               <v-card class="rounded-lg" width="400" height="400" :elevation="hover ? 10 : 2">
@@ -50,7 +50,7 @@
           </v-hover>
         </v-col>
 
-        <v-col class="d-flex justify-center align-center" cols="12" md="3">
+        <v-col class="d-flex justify-center align-center" cols="12" lg="4">
           <v-card class="reg_box" width="400" flat>
             <v-card-title>
               <h1>New to DOFECA ?</h1>
@@ -61,6 +61,7 @@
             </v-card-text>
           </v-card>
         </v-col>
+        <v-col cols="12" lg="2"></v-col>
       </v-row>
     </div>
   </v-container>
