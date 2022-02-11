@@ -50,29 +50,97 @@
       </v-row>
     </v-container>
     <v-container id="third">
-      <h1 class="text-center">NEWS</h1>
-      <v-row class="pt-16">
-        <v-card width="500">
-          <v-simple-table>
-            <template v-slot:default>
-              <thead>
-                <tr>
-                  <th class="text-left">Name</th>
-                  <th class="text-left">Calories</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="item in desserts" :key="item.name">
-                  <td>{{ item.name }}</td>
-                  <td>{{ item.calories }}</td>
-                </tr>
-              </tbody>
-            </template>
-          </v-simple-table>
-        </v-card>
-      </v-row>
+      <v-card color="basil">
+        <v-card-title class="text-center justify-center py-6">
+          <h1 class="font-weight-bold text-h2">NEWS</h1>
+        </v-card-title>
+
+        <v-tabs v-model="tab" background-color="transparent" grow>
+          <v-tab v-for="activity in activities" :key="activity">{{ activity }}</v-tab>
+        </v-tabs>
+        <v-tabs-items v-model="tab">
+          <v-tab-item v-for="activity in activities" :key="activity">
+            <v-card flat>
+              <v-card-text>
+                <v-simple-table>
+                  <template v-slot:default>
+                    <thead>
+                      <tr>
+                        <th class="text-left">Name</th>
+                        <th class="text-left">Calories</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="list in lists" :key="list.name">
+                        <td>{{ list.name }}</td>
+                        <td><v-btn to="/news">{{ list.calories }}</v-btn></td>
+                      </tr>
+                    </tbody>
+                  </template>
+                </v-simple-table>
+              </v-card-text>
+            </v-card>
+          </v-tab-item>
+        </v-tabs-items>
+      </v-card>
     </v-container>
-    <v-container id="forth">
+    <v-container id="fourth">
+      <div class="describe">
+        <p class="text-h6 text-center">
+        Every day, with love and attention, we roast specialty coffees for you. We carefully select each lot, develop a roasting profile for each type of grain, carefully check the quality. Only after that we are ready to offer this coffee to you.
+      </p>
+      </div>
+    </v-container>
+    <v-container>
+      <h1 class="text-center">New Products</h1>
+      <v-item-group
+      v-model="selected"
+      multiple
+      >
+        <v-row class="pt-16">
+          <v-col
+            v-for="card in cards"
+            :key="card.title">
+            <v-card
+            class="mx-auto"
+            width="300">
+            <v-item v-slot="{ active, toggle }">
+              <v-img
+              class="text-right"
+              :src="card.src"
+              width="300"
+              @click="toggle"
+              >
+                <v-btn
+                    icon
+                    dark
+                  >
+                    <v-icon>
+                      {{ active ? 'mdi-heart' : 'mdi-heart-outline' }}
+                    </v-icon>
+                  </v-btn>
+              </v-img>
+            </v-item>
+              <v-card-title
+              v-text="card.title"></v-card-title>
+              <v-card-text
+              v-text="card.text"
+              ></v-card-text>
+              <v-card-actions>
+                <v-btn>
+                  加入購物車
+                  <v-icon>mdi-cart-variant</v-icon>
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-item-group>
+      <div>
+        <v-btn class="pt-16" text plain>VIEW ALL PRODUCTS</v-btn>
+      </div>
+    </v-container>
+    <v-container id="fifth">
       <v-row>
         <v-col class="text-center" cols="12" md="6" order-md="2">
           <img src="https://picsum.photos/450/600/?random=10" />
@@ -120,7 +188,11 @@ export default {
           prevEl: '.swiper-button-prev'
         }
       },
-      desserts: [
+      tab: null,
+      activities: [
+        '課程活動', 'Entrees', 'Deserts', 'Cocktails'
+      ],
+      lists: [
         {
           name: 'Frozen Yogurt',
           calories: 159
@@ -140,20 +212,14 @@ export default {
         {
           name: 'Gingerbread',
           calories: 356
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375
-        },
-        {
-          name: 'Lollipop',
-          calories: 392
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408
         }
-      ]
+      ],
+      cards: [
+        { title: 'coffee beans', src: 'https://picsum.photos/300/200/?random=10', text: '500元' },
+        { title: 'coffee beans', src: 'https://picsum.photos/300/200/?random=1', text: '890元' },
+        { title: 'coffee beans', src: 'https://picsum.photos/300/200/?random=8', text: '650元' }
+      ],
+      selected: []
     }
   }
 }

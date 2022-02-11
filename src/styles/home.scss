@@ -70,9 +70,25 @@
 
   #third{
     padding-top: 100px;
+    .third_news{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
-  #forth{
+  #fourth{
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .describe{
+      width: 550px;
+    }
+  }
+
+
+  #fifth{
     padding-top: 100px;
     .home_intro{
       display: flex;
@@ -80,4 +96,5 @@
       align-items: center;
     }
   }
-}
+  }
+

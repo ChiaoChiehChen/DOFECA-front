@@ -5,16 +5,16 @@
 
       <router-link to="/" class="a">
         <v-toolbar-title class="logo">
-          <img class="my-2 logo_img" src="../assets/dofecalogo.png" alt="DOFECA" />
+          <img class="logo_img" src="../assets/dofecalogo.png" alt="DOFECA" />
         </v-toolbar-title>
       </router-link>
 
       <v-toolbar-items class="hidden-md-and-down">
         <v-row align="center" justify="space-around">
           <v-col>
-            <v-btn class="nav-btn subtitle-1" color="#9d8460" plain text to="/product">All products</v-btn>
-            <v-btn class="subtitle-1" retain-focus-on-click text >News</v-btn>
             <v-btn class="subtitle-1" text to="/about">About Us</v-btn>
+            <v-btn class="subtitle-1" retain-focus-on-click text >News</v-btn>
+            <v-btn class="nav-btn subtitle-1" color="#9d8460" plain text to="/product">Products</v-btn>
           </v-col>
         </v-row>
         <!-- <template v-slot:extension></template> -->
@@ -23,7 +23,9 @@
 
       <v-menu open-on-hover bottom offset-y v-if="!user.isLogin">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn class=" mt-5 hidden-md-and-down" text v-bind="attrs" v-on="on">Member</v-btn>
+          <v-btn class=" mt-3 hidden-md-and-down" icon v-bind="attrs" v-on="on">
+          <v-icon>mdi-account</v-icon>
+          </v-btn>
         </template>
 
         <v-list>
