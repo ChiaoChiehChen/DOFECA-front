@@ -42,8 +42,9 @@
         </v-list>
       </v-menu>
 
-      <v-btn text v-if="user.isLogin">Order</v-btn>
-      <v-btn text v-if="user.isLogin" @click="logout">Logout</v-btn>
+      <v-btn class="mt-5" text v-if="user.isLogin">Order</v-btn>
+      <v-btn class="mt-5" text v-if="user.isLogin" @click="logout">Logout</v-btn>
+      <v-btn class="mt-5" text v-if="user.isLogin && user.isAdmin" to="/admin">Management</v-btn>
       <v-btn class="mt-3" icon to="/cart">
         <v-icon>mdi-cart-variant</v-icon>
       </v-btn>
