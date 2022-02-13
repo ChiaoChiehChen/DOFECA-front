@@ -1,5 +1,5 @@
 <template>
-<div>
+<v-sheet>
   <h1>請選擇管理項目</h1>
-</div>
+</v-sheet>
 </template>

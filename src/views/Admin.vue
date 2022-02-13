@@ -17,7 +17,7 @@
             </v-tabs>
           </v-sheet>
         </v-col>
-        <v-col>
+        <v-col col="12">
           <router-view></router-view>
         </v-col>
       </v-row>

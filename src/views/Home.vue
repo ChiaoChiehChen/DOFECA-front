@@ -216,8 +216,8 @@ export default {
       ],
       cards: [
         { title: 'coffee beans', src: 'https://picsum.photos/300/200/?random=10', text: '500元' },
-        { title: 'coffee beans', src: 'https://picsum.photos/300/200/?random=1', text: '890元' },
-        { title: 'coffee beans', src: 'https://picsum.photos/300/200/?random=8', text: '650元' }
+        { title: 'coffee powder', src: 'https://picsum.photos/300/200/?random=1', text: '890元' },
+        { title: 'coffee machine', src: 'https://picsum.photos/300/200/?random=8', text: '650元' }
       ],
       selected: []
     }

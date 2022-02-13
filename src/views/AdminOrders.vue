@@ -1,5 +1,13 @@
 <template>
 <div>
-  <h1>訂單管理</h1>
+  <v-form>
+    <v-text-field
+      hide-details
+      single-line
+      type="number"
+      min="0"
+      max="10"
+    ></v-text-field>
+  </v-form>
 </div>
 </template>

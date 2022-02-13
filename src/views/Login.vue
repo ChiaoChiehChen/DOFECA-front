@@ -26,13 +26,13 @@
 
                     <v-text-field
                       v-model="form.password"
-                      :type="showPassword ? 'text' : 'password'"
                       label="My Password"
                       :rules="inputRules"
                       :state="state.password"
                       hint="密碼長度為 4 到 20 個字"
                       prepend-icon="mdi-lock"
                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                      :type="showPassword ? 'text' : 'password'"
                       @click:append="showPassword = !showPassword"
                       required
                     ></v-text-field>
@@ -93,6 +93,8 @@ export default {
   },
   methods: {
     login () {
+      const valid = this.$refs.form.validate()
+      if (!valid) return
       this.$store.dispatch('user/login', this.form)
     }
   }
