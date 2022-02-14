@@ -2,7 +2,7 @@
   <div id="adminProducts">
     <v-container>
       <v-row justify="center">
-        <v-dialog v-model="dialog" max-width="700px">
+        <v-dialog v-model="dialog" @save="submitSave" max-width="700px">
           <template v-slot:activator="{ on, adds }">
             <v-btn v-bind="adds" v-on="on">新增</v-btn>
           </template>

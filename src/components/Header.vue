@@ -38,12 +38,6 @@
             <v-list-item-title>
               <v-btn text v-if="!user.isLogin" to="/register">Register</v-btn>
             </v-list-item-title>
-            <v-list-item-title>
-              <v-btn text v-if="user.isLogin" to="/register">Order</v-btn>
-            </v-list-item-title>
-            <v-list-item-title>
-              <v-btn text v-if="user.isLogin" to="/register">Logout</v-btn>
-            </v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
