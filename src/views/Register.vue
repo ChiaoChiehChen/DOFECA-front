@@ -23,6 +23,12 @@
                       required
                     ></v-text-field>
                     <v-text-field
+                      v-model="form.name"
+                      label="Your Name"
+                      hint="名字必填"
+                      required
+                    ></v-text-field>
+                    <v-text-field
                       v-model="form.account"
                       label="Create New Account"
                       :rules="inputRules"
@@ -67,6 +73,7 @@ export default {
     return {
       valid: true,
       form: {
+        name: '',
         account: '',
         password: '',
         email: ''

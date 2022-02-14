@@ -1,13 +1,5 @@
 <template>
 <div>
-  <v-form>
-    <v-text-field
-      hide-details
-      single-line
-      type="number"
-      min="0"
-      max="10"
-    ></v-text-field>
-  </v-form>
+
 </div>
 </template>

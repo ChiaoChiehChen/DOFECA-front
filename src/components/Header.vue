@@ -38,13 +38,21 @@
             <v-list-item-title>
               <v-btn text v-if="!user.isLogin" to="/register">Register</v-btn>
             </v-list-item-title>
+            <v-list-item-title>
+              <v-btn text v-if="user.isLogin" to="/register">Order</v-btn>
+            </v-list-item-title>
+            <v-list-item-title>
+              <v-btn text v-if="user.isLogin" to="/register">Logout</v-btn>
+            </v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
 
       <v-btn class="mt-5" text v-if="user.isLogin">Order</v-btn>
       <v-btn class="mt-5" text v-if="user.isLogin" @click="logout">Logout</v-btn>
-      <v-btn class="mt-5" text v-if="user.isLogin && user.isAdmin" to="/admin">Management</v-btn>
+      <v-btn class="mt-3" icon v-if="user.isLogin && user.isAdmin" to="/admin">
+        <v-icon>mdi-cog</v-icon>
+      </v-btn>
       <v-btn class="mt-3" icon to="/cart">
         <v-icon>mdi-cart-variant</v-icon>
       </v-btn>
