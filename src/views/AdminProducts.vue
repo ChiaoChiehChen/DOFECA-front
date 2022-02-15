@@ -224,12 +224,12 @@ export default {
         _id: ''
       }
       this.$refs.observer.reset()
-    },
-    editProduct (index) {
-      // 共用表格
-      this.form = { ...this.products[index], image: null }
-      this.dialog = true
     }
+    // editProduct (index) {
+    //   // 共用表格
+    //   this.form = { ...this.products[index], image: null }
+    //   this.dialog = true
+    // }
   },
   async created () {
     try {
