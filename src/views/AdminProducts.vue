@@ -1,6 +1,11 @@
 <template>
   <div id="adminProducts">
     <v-container>
+      <v-data-table :headers="headers" :items="products">
+        <template>
+          <v-img></v-img>
+        </template>
+      </v-data-table>
       <v-row justify="center">
         <v-dialog v-model="dialog" max-width="700px">
           <template v-slot:activator="{ on, adds }">
@@ -123,6 +128,15 @@
 export default {
   data () {
     return {
+      headers: [
+        { text: '產品圖片', value: 'image' },
+        { text: '產品名稱', value: 'name' },
+        { text: '產品價錢', value: 'price' },
+        { text: '產品分類', value: 'category' },
+        { text: '產品描述', value: 'description' },
+        { text: '產品狀態', value: 'sell' },
+        { text: '產品操作', value: 'action' }
+      ],
       form: {
         name: '',
         price: null,
@@ -138,6 +152,7 @@ export default {
         淺焙: ['咖啡豆', '咖啡粉', '膠囊咖啡'],
         設備: ['咖啡機', '濾紙', '咖啡壺', '濾杯']
       },
+      products: [],
       nameRules: [
         v => !!v || '商品名稱必填',
         v => (v && v.length > 0) || '商品名稱必填欄位'
@@ -148,13 +163,12 @@ export default {
       ],
       categoryRules: [
         v => !!v || '種類必選',
-        v => (v && v.length >= 0) || '種類欄位不得為空'
+        v => (v && v.length > 0) || '種類欄位不得為空'
       ],
       descriptionRules: [
         v => !!v || '商品描述必填',
-        v => (v && v.length >= 0) || '商品描述欄位不得為空'
+        v => (v && v.length > 0) || '商品描述欄位不得為空'
       ],
-      products: [],
       btnSubmitting: false,
       dialog: false
     }
@@ -163,17 +177,19 @@ export default {
     // 送出
     async submitModal (event) {
       event.preventDefault()
-      // 檢查必填欄位未填寫
+      // 檢查如果必填欄位未填寫
       if (!this.nameRules || !this.priceRules || !this.categoryRules || !this.descriptionRules) {
         return
       }
       this.btnSubmitting = true
+      // 建立FormData物件
       const fd = new FormData()
       for (const key in this.form) {
         if (key !== '_id') {
           fd.append(key, this.form[key])
         }
       }
+      // console.log(this.form)
       try {
         const { data } = await this.api.post('/products', fd, {
           headers: {
@@ -181,6 +197,7 @@ export default {
           }
         })
         this.products.push(data.result)
+        console.log(this.products)
         this.dialog = false
       } catch (error) {
         this.$swal({
@@ -207,6 +224,27 @@ export default {
         _id: ''
       }
       this.$refs.observer.reset()
+    },
+    editProduct (index) {
+      // 共用表格
+      this.form = { ...this.products[index], image: null }
+      this.dialog = true
+    }
+  },
+  async created () {
+    try {
+      const { data } = await this.api.get('/products/all', {
+        headers: {
+          authorization: 'Bearer ' + this.user.token
+        }
+      })
+      this.products = data.result
+    } catch (error) {
+      this.$swal({
+        icon: 'error',
+        title: '錯誤',
+        text: '取得商品失敗'
+      })
     }
   }
 }
