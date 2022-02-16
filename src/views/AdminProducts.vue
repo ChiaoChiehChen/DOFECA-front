@@ -1,11 +1,6 @@
 <template>
   <div id="adminProducts">
     <v-container>
-      <v-data-table :headers="headers" :items="products">
-        <template>
-          <v-img></v-img>
-        </template>
-      </v-data-table>
       <v-row justify="center">
         <v-dialog v-model="dialog" max-width="700px">
           <template v-slot:activator="{ on, adds }">
@@ -120,6 +115,15 @@
           </v-card>
         </v-dialog>
       </v-row>
+      <v-data-table class="mt-10" :headers="headers" :items="products">
+        <template v-slot:item.image="{item}">
+          <v-img :src="item.image" max-width="100" max-height="100px"></v-img>
+        </template>
+        <template v-slot:item.sell="{item}"> {{ item.sell ? 'V' : '' }}
+        </template>
+        <template v-slot:item.category="{item}">{{ item.category }}
+        </template>
+      </v-data-table>
     </v-container>
   </div>
 </template>
@@ -178,24 +182,32 @@ export default {
     async submitModal (event) {
       event.preventDefault()
       // 檢查如果必填欄位未填寫
-      if (!this.nameRules || !this.priceRules || !this.categoryRules || !this.descriptionRules) {
+      if (!this.form.name || !this.form.price || !this.form.category || !this.form.description) {
+        this.$swal({
+          icon: 'error',
+          title: '錯誤',
+          text: '缺少必填欄位'
+        })
         return
       }
       this.btnSubmitting = true
       // 建立FormData物件
       const fd = new FormData()
       for (const key in this.form) {
-        if (key !== '_id') {
+        if (key === 'category') {
+          // 換為 JSON 字符串
+          fd.append(key, JSON.stringify(this.form[key]))
+        } else if (key !== '_id') {
           fd.append(key, this.form[key])
         }
       }
-      // console.log(this.form)
       try {
         const { data } = await this.api.post('/products', fd, {
           headers: {
             authorization: 'Bearer ' + this.user.token
           }
         })
+
         this.products.push(data.result)
         console.log(this.products)
         this.dialog = false
@@ -232,6 +244,7 @@ export default {
     // }
   },
   async created () {
+    // 元件建立時，抓目前商品
     try {
       const { data } = await this.api.get('/products/all', {
         headers: {
@@ -239,6 +252,7 @@ export default {
         }
       })
       this.products = data.result
+      console.log(data.result)
     } catch (error) {
       this.$swal({
         icon: 'error',
