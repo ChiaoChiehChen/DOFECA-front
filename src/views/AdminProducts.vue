@@ -123,6 +123,7 @@
         </template>
         <template v-slot:item.category="{item}">{{ item.category }}
         </template>
+        <div></div>
       </v-data-table>
     </v-container>
   </div>
