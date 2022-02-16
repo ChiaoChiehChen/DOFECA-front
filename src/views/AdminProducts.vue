@@ -116,14 +116,14 @@
         </v-dialog>
       </v-row>
       <v-data-table class="mt-10" :headers="headers" :items="products">
-        <template v-slot:item.image="{item}">
-          <v-img :src="item.image" max-width="100" max-height="100px"></v-img>
+        <template v-slot:item.image="{ item }">
+          <v-img v-if="item.image" :src="item.image"  max-width="100" max-height="100px"></v-img>
         </template>
-        <template v-slot:item.sell="{item}"> {{ item.sell ? 'V' : '' }}
+        <template v-slot:item.sell="{ item }"> {{ item.sell ? 'V' : '' }}</template>
+        <template v-slot:item.category="{item}">{{ item.category }}</template>
+        <template v-slot:item.action="{ item }">
+          <v-btn @click="editProduct(item._id)">編輯</v-btn>
         </template>
-        <template v-slot:item.category="{item}">{{ item.category }}
-        </template>
-        <div></div>
       </v-data-table>
     </v-container>
   </div>
@@ -195,9 +195,11 @@ export default {
       // 建立FormData物件
       const fd = new FormData()
       for (const key in this.form) {
+        // 如果key 為 產品分類
         if (key === 'category') {
           // 換為 JSON 字符串
           fd.append(key, JSON.stringify(this.form[key]))
+          // 新增時不能傳id進去
         } else if (key !== '_id') {
           fd.append(key, this.form[key])
         }
@@ -208,7 +210,6 @@ export default {
             authorization: 'Bearer ' + this.user.token
           }
         })
-
         this.products.push(data.result)
         console.log(this.products)
         this.dialog = false
@@ -234,7 +235,8 @@ export default {
         image: null,
         sell: false,
         category: { big: '', small: '' },
-        _id: ''
+        _id: '',
+        index: -1
       }
       this.$refs.observer.reset()
     }
