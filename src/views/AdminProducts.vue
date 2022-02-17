@@ -2,7 +2,7 @@
   <div id="adminProducts">
     <v-container>
       <v-row justify="center">
-        <v-dialog v-model="dialog" max-width="700px" ref="dialog">
+        <v-dialog v-model="dialog" max-width="700px">
           <template v-slot:activator="{ on, adds }">
             <v-btn v-bind="adds" v-on="on">新增</v-btn>
           </template>
@@ -218,13 +218,12 @@ export default {
           this.products.push(data.result)
           // console.log(this.products)
         } else {
-          const { data } = await this.api.patch('/products/' + this.form.id, fd, {
+          const { data } = await this.api.patch('/products/' + this.form._id, fd, {
             headers: {
               authorization: 'Bearer ' + this.user.token
             }
           })
           this.products[this.form.index] = { ...this.form, image: data.result.image }
-          this.$refs.dialog.refresh()
         }
         this.dialog = false
       } catch (error) {
@@ -258,17 +257,18 @@ export default {
       // console.log(id)
       const index = this.products.findIndex(product => product._id === id)
       // 共用表格
-      // this.form = {
-      //   name: this.products[index].name,
-      //   price: this.products[index].price,
-      //   description: this.products[index].description,
-      //   image: null,
-      //   sell: this.products[index].sell,
-      //   category: this.products[index].category,
-      //   _id: this.products[index]._id,
-      // }
+      this.form = {
+        name: this.products[index].name,
+        price: this.products[index].price,
+        description: this.products[index].description,
+        image: null,
+        sell: this.products[index].sell,
+        category: this.products[index].category,
+        _id: this.products[index]._id,
+        index
+      }
       // 其餘運算
-      this.form = { ...this.products[index], image: null, index: -1 }
+      // this.form = { ...this.products[index], image: null, index: -1 }
       this.dialog = true
     }
   },
