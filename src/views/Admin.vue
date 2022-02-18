@@ -11,8 +11,8 @@
             >
               <v-tabs-slider color="white"></v-tabs-slider>
               <v-tab to="/admin">後台首頁</v-tab>
-              <v-tab to="/admin/products">產品管理</v-tab>
-              <v-tab to="/admin/orders">訂單管理</v-tab>
+              <v-tab to="/admin/adminproducts">產品管理</v-tab>
+              <v-tab to="/admin/adminorders">訂單管理</v-tab>
               <v-tab>文章管理</v-tab>
               <v-tab>報名訂單管理</v-tab>
             </v-tabs>

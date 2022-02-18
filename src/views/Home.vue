@@ -104,23 +104,23 @@
             <v-card
             class="mx-auto"
             width="300">
-            <v-item v-slot="{ active, toggle }">
-              <v-img
-              class="text-right"
-              :src="card.src"
-              width="300"
-              @click="toggle"
-              >
-                <v-btn
-                    icon
-                    dark
-                  >
-                    <v-icon>
-                      {{ active ? 'mdi-heart' : 'mdi-heart-outline' }}
-                    </v-icon>
-                  </v-btn>
-              </v-img>
-            </v-item>
+              <v-item v-slot="{ active, toggle }">
+                <v-img
+                class="text-right"
+                :src="card.src"
+                width="300"
+                @click="toggle"
+                >
+                  <v-btn
+                      icon
+                      dark
+                    >
+                      <v-icon>
+                        {{ active ? 'mdi-heart' : 'mdi-heart-outline' }}
+                      </v-icon>
+                    </v-btn>
+                </v-img>
+              </v-item>
               <v-card-title
               v-text="card.title"></v-card-title>
               <v-card-text

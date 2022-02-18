@@ -117,14 +117,15 @@
       </v-row>
       <v-data-table class="mt-10" :headers="headers" :items="products">
         <template v-slot:item.image="{ item }">
-          <v-img v-if="item.image" :src="item.image"  max-width="100" max-height="100px"></v-img>
+          <v-img v-if="item.image" :src="item.image" max-width="100" max-height="100px"></v-img>
         </template>
-        <template v-slot:item.sell="{ item }"> {{ item.sell ? 'V' : '' }}</template>
+        <template v-slot:item.sell="{ item }">{{ item.sell ? 'V' : '' }}</template>
         <template v-slot:item.category="{ item }">
           <span v-if="item.category">{{ item.category.big }} - {{ item.category.small }}</span>
         </template>
         <template v-slot:item.action="{ item }">
           <v-btn @click="editProduct(item._id)">編輯</v-btn>
+          <v-btn @click="delProduct(item._id)">刪除</v-btn>
         </template>
       </v-data-table>
     </v-container>
@@ -199,7 +200,7 @@ export default {
       const fd = new FormData()
       for (const key in this.form) {
         // 如果key 為 產品分類
-        // console.log(key.big)
+        console.log(key.big)
         if (key === 'category') {
           // 換為 JSON 字符串
           fd.append(key, JSON.stringify(this.form[key]))
@@ -223,6 +224,7 @@ export default {
               authorization: 'Bearer ' + this.user.token
             }
           })
+          // console.log(data.result.category)
           this.products[this.form.index] = { ...this.form, image: data.result.image }
         }
         this.dialog = false
@@ -253,26 +255,68 @@ export default {
       }
       this.$refs.observer.reset()
     },
-    editProduct (id) {
+    editProduct (a) {
       // console.log(id)
-      const index = this.products.findIndex(product => product._id === id)
+      const index = this.products.findIndex(product => product._id === a)
       // 共用表格
+      // console.log(index)
+      // console.log(this.form.category)
       this.form = {
         name: this.products[index].name,
         price: this.products[index].price,
         description: this.products[index].description,
         image: null,
         sell: this.products[index].sell,
-        category: this.products[index].category,
+        category: {},
         _id: this.products[index]._id,
         index
       }
       // 其餘運算
       // this.form = { ...this.products[index], image: null, index: -1 }
       this.dialog = true
+    },
+    // 刪除
+    async delProduct (id) {
+      // console.log(123)
+      try {
+        await this.api.delete('/products/' + id, {
+          headers: {
+            authorization: 'Bearer ' + this.user.token
+          }
+        })
+        this.$swal({
+          icon: 'success',
+          title: '成功',
+          text: '刪除成功'
+        })
+      } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: '錯誤',
+          text: '刪除失敗'
+        })
+      }
     }
   },
   async created () {
+    // 元件建立時，抓目前商品
+    try {
+      const { data } = await this.api.get('/products/all', {
+        headers: {
+          authorization: 'Bearer ' + this.user.token
+        }
+      })
+      this.products = data.result
+      // console.log(data.result)
+    } catch (error) {
+      this.$swal({
+        icon: 'error',
+        title: '錯誤',
+        text: '取得商品失敗'
+      })
+    }
+  },
+  async updated () {
     // 元件建立時，抓目前商品
     try {
       const { data } = await this.api.get('/products/all', {

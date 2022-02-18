@@ -31,6 +31,48 @@ const routes = [
     }
   },
   {
+    path: '/about',
+    name: 'About',
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    meta: {
+      title: '關於我們 | DOFECA'
+    }
+  },
+  {
+    path: '/news',
+    name: 'News',
+    component: () => import(/* webpackChunkName: "news" */ '../views/News.vue'),
+    meta: {
+      title: '最新消息 | DOFECA'
+    }
+  },
+  {
+    path: '/products',
+    name: 'Products',
+    component: () => import(/* webpackChunkName: "products" */ '../views/Products.vue'),
+    meta: {
+      title: ' | DOFECA'
+    }
+  },
+  {
+    path: '/product/:id',
+    name: 'Product',
+    component: () => import(/* webpackChunkName: "product" */ '../views/Products.vue'),
+    meta: {
+      title: '所有產品 | DOFECA'
+    }
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue'),
+    meta: {
+      title: '購物車 | DOFECA',
+      login: true
+    }
+  },
+  // 管理員
+  {
     path: '/admin',
     name: 'Admin',
     component: () => import(/* webpackChunkName: "admin" */ '../views/Admin.vue'),
@@ -46,7 +88,7 @@ const routes = [
         }
       },
       {
-        path: 'products',
+        path: 'adminproducts',
         name: 'AdminProducts',
         component: () => import(/* webpackChunkName: "admin" */ '../views/AdminProducts.vue'),
         meta: {
@@ -56,7 +98,7 @@ const routes = [
         }
       },
       {
-        path: 'orders',
+        path: 'adminorders',
         name: 'AdminOrders',
         component: () => import(/* webpackChunkName: "admin" */ '../views/AdminOrders.vue'),
         meta: {
@@ -66,31 +108,6 @@ const routes = [
         }
       }
     ]
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    meta: {
-      title: '關於我們 | DOFECA'
-    }
-  },
-  {
-    path: '/product/:id',
-    name: 'Product',
-    component: () => import(/* webpackChunkName: "product" */ '../views/Product.vue'),
-    meta: {
-      title: '所有產品 | DOFECA'
-    }
-  },
-  {
-    path: '/cart',
-    name: 'Cart',
-    component: () => import(/* webpackChunkName: "cart" */ '../views/Cart.vue'),
-    meta: {
-      title: '購物車 | DOFECA',
-      login: true
-    }
   }
 ]
 

@@ -13,8 +13,8 @@
         <v-row align="center" justify="space-around">
           <v-col>
             <v-btn class="subtitle-1" text to="/about">About Us</v-btn>
-            <v-btn class="subtitle-1" retain-focus-on-click text >News</v-btn>
-            <v-btn class="nav-btn subtitle-1" color="#9d8460" plain text to="/product">Products</v-btn>
+            <v-btn class="subtitle-1" retain-focus-on-click text to="/news">News</v-btn>
+            <v-btn class="nav-btn subtitle-1" color="#9d8460" plain text to="/products">Products</v-btn>
           </v-col>
         </v-row>
         <!-- <template v-slot:extension></template> -->
@@ -61,19 +61,18 @@
             </v-list-item-title>
           </v-list-item>
           <v-divider></v-divider>
-          <v-list-item class="mt-5" to="/product">
-            <v-list-item-title>All Products</v-list-item-title>
+          <v-list-item class="mt-5"  to="/about">
+            <v-list-item-title>About Us</v-list-item-title>
           </v-list-item>
 
-          <v-list-item>
+          <v-list-item to="/news">
             <v-list-item-title>News</v-list-item-title>
           </v-list-item>
 
-          <v-list-item to="/about">
-            <v-list-item-title>
-              About Us
-            </v-list-item-title>
+          <v-list-item to="/products">
+            <v-list-item-title>All Products</v-list-item-title>
           </v-list-item>
+
         </v-list-item-group>
         <v-list-group :value="false" v-if="!user.isLogin">
           <template v-slot:activator>
