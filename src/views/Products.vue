@@ -1,9 +1,9 @@
 <template>
-<v-main>
+<v-main id="products">
   <v-container>
     <v-row>
-      <v-col cols="12" md="4">
-        <ProductCard></ProductCard>
+      <v-col cols="12" md="6" lg="3" v-for="product in products" :key="product._id">
+        <ProductCard :product="product"></ProductCard>
       </v-col>
     </v-row>
   </v-container>
@@ -17,6 +17,7 @@ export default {
   components: {
     ProductCard
   },
+  // 後端資料放進來
   data () {
     return {
       products: []
