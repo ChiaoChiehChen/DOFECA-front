@@ -57,7 +57,7 @@ const routes = [
   {
     path: '/product/:id',
     name: 'Product',
-    component: () => import(/* webpackChunkName: "product" */ '../views/Products.vue'),
+    component: () => import(/* webpackChunkName: "product" */ '../views/Product.vue'),
     meta: {
       title: '所有產品 | DOFECA'
     }

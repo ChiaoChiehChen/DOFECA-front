@@ -37,7 +37,7 @@
                   </v-col>
                   <v-col cols="12">
                     <v-text-field
-                      v-model="form.price"
+                      v-model.number="form.price"
                       label="價錢"
                       type="number"
                       min="0"

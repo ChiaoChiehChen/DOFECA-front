@@ -12,7 +12,7 @@ export const logout = (state, data) => {
   state.account = ''
   state.role = 0
   state.email = ''
-  state.cart = []
+  state.cart = 0
 }
 
 export const getInfo = (state, data) => {
@@ -24,4 +24,9 @@ export const getInfo = (state, data) => {
 
 export const extend = (state, data) => {
   state.token = data
+}
+
+export const updateCart = (state, data) => {
+  // 購物車數量更新
+  state.cart = data
 }
