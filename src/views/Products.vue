@@ -5,20 +5,20 @@
         <v-col cols="2">
           <v-list flat>
             <v-list-item-group color="#9d8460">
-              <v-list-item>
-                  <v-list-item-title>ALL</v-list-item-title>
+              <v-list-item @click="filter=''">
+                  <v-list-item-title >ALL</v-list-item-title>
               </v-list-item>
-              <v-list-item>
+              <v-list-item  @click="filter='深焙'">
                   <v-list-item-title>深焙</v-list-item-title>
               </v-list-item>
-              <v-list-item>
-                  <v-list-item-title>中焙</v-list-item-title>
+              <v-list-item @click="filter='中焙'">
+                  <v-list-item-title >中焙</v-list-item-title>
               </v-list-item>
-              <v-list-item>
-                  <v-list-item-title>淺焙</v-list-item-title>
+              <v-list-item @click="filter='淺焙'">
+                  <v-list-item-title >淺焙</v-list-item-title>
               </v-list-item>
-              <v-list-item>
-                  <v-list-item-title>相關設備</v-list-item-title>
+              <v-list-item @click="filter='設備'">
+                  <v-list-item-title>設備</v-list-item-title>
               </v-list-item>
             </v-list-item-group>
           </v-list>
@@ -36,7 +36,7 @@
         </v-col>
         <v-col cols="9">
           <v-row>
-            <v-col cols="12" md="6" lg="3" v-for="product in products" :key="product._id">
+            <v-col cols="12" md="6" lg="3" v-for="product in filterItems" :key="product._id">
               <ProductCard :product="product"></ProductCard>
             </v-col>
           </v-row>
@@ -56,13 +56,24 @@ export default {
   // 後端資料放進來
   data () {
     return {
-      products: []
+      products: [],
+      filter: ''
+    }
+  },
+  computed: {
+    filterItems () {
+      // console.log(123)
+      return this.products.filter(item => {
+        if (this.filter === '') return true
+        return item.category.big === this.filter
+      })
     }
   },
   async created () {
     try {
       const { data } = await this.api.get('/products')
       this.products = data.result
+      console.log(this.products[0].category.big)
     } catch (error) {
       this.$swal({
         icon: 'error',

@@ -51,7 +51,7 @@ const routes = [
     name: 'Products',
     component: () => import(/* webpackChunkName: "products" */ '../views/Products.vue'),
     meta: {
-      title: ' | DOFECA'
+      title: ' 商品 | DOFECA'
     }
   },
   {
@@ -108,6 +108,11 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: '*',
+    name: 'NotFound',
+    redirect: '/'
   }
 ]
 

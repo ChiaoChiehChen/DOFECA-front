@@ -37,13 +37,13 @@
                         @click:append="showPassword = !showPassword"
                         required
                       ></v-text-field>
-                      <v-action class="d-flex justify-center align-center">
+                      <v-card-actions class="d-flex justify-center align-center">
                         <v-btn class="login_btn mt-10" type="submit" plain>
                           <span></span>
                           <span></span>
                           Login
                         </v-btn>
-                      </v-action>
+                      </v-card-actions>
                     </v-form>
                   </v-card-text>
                 </v-card>

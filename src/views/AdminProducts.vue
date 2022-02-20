@@ -115,6 +115,7 @@
           </v-card>
         </v-dialog>
       </v-row>
+      <!-- 產品列表 -->
       <v-data-table class="mt-10" :headers="headers" :items="products">
         <template v-slot:item.image="{ item }">
           <v-img v-if="item.image" :src="item.image" max-width="100" max-height="100px"></v-img>
@@ -151,7 +152,7 @@ export default {
         description: '',
         image: null,
         sell: false,
-        category: {},
+        category: { big: '', small: '' },
         _id: '',
         index: -1
       },
@@ -255,9 +256,9 @@ export default {
       }
       this.$refs.observer.reset()
     },
-    editProduct (a) {
+    editProduct (id) {
       // console.log(id)
-      const index = this.products.findIndex(product => product._id === a)
+      const index = this.products.findIndex(product => product._id === id)
       // 共用表格
       // console.log(index)
       // console.log(this.form.category)
@@ -267,7 +268,7 @@ export default {
         description: this.products[index].description,
         image: null,
         sell: this.products[index].sell,
-        category: {},
+        category: { big: '', small: '' },
         _id: this.products[index]._id,
         index
       }

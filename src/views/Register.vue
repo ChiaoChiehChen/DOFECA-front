@@ -23,12 +23,6 @@
                       required
                     ></v-text-field>
                     <v-text-field
-                      v-model="form.name"
-                      label="Your Name"
-                      hint="名字必填"
-                      required
-                    ></v-text-field>
-                    <v-text-field
                       v-model="form.account"
                       label="Create New Account"
                       :rules="inputRules"
@@ -50,10 +44,10 @@
                       @click:append="showPassword = !showPassword"
                       required
                     ></v-text-field>
-                    <v-action class="d-flex justify-center align-center">
+                    <v-card-actions class="d-flex justify-center align-center">
                       <v-btn class="mt-5" color="brown darken-1"
                       type="submit" plain>Sign Up</v-btn>
-                    </v-action>
+                    </v-card-actions>
                   </v-form>
                 </v-card-text>
               </v-card>
@@ -73,7 +67,6 @@ export default {
     return {
       valid: true,
       form: {
-        name: '',
         account: '',
         password: '',
         email: ''

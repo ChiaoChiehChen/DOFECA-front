@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     addCart () {
-      this.$store.state.dispatch('user/addCart', { id: this.$route.params.id, quantity: this.quantity })
+      this.$store.dispatch('user/addCart', { product: this.$route.params.id, quantity: this.quantity })
     }
   },
   async created () {
@@ -69,6 +69,7 @@ export default {
       this.image = data.result.image
       this.sell = data.result.sell
       this.category = data.result.category
+      document.title = `${this.name} | DOFECA`
     } catch (error) {
       this.$route.push('/')
     }

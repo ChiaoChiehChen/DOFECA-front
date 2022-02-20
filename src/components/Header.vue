@@ -1,7 +1,15 @@
 <template>
   <nav>
-    <v-app-bar id="header" class="px-md-10" app color="white" height="80" prominent elevate-on-scroll>
-      <v-app-bar-nav-icon class=" hidden-md-and-up mt-3" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+    <v-app-bar
+      id="header"
+      class="px-md-10"
+      app
+      color="white"
+      height="80"
+      prominent
+      elevate-on-scroll
+    >
+      <v-app-bar-nav-icon class="hidden-md-and-up mt-3" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <router-link to="/" class="a">
         <v-toolbar-title class="logo">
@@ -23,8 +31,8 @@
 
       <v-menu open-on-hover bottom offset-y v-if="!user.isLogin">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn class=" mt-3 hidden-md-and-down" icon v-bind="attrs" v-on="on">
-          <v-icon>mdi-account</v-icon>
+          <v-btn class="mt-3 hidden-md-and-down" icon v-bind="attrs" v-on="on">
+            <v-icon>mdi-account</v-icon>
           </v-btn>
         </template>
 
@@ -47,8 +55,10 @@
       <v-btn class="mt-3" icon v-if="user.isLogin && user.isAdmin" to="/admin">
         <v-icon>mdi-cog</v-icon>
       </v-btn>
-      <v-btn class="mt-3" icon to="/cart">
-        <v-icon>mdi-cart-variant</v-icon>
+      <v-btn class="mt-3" icon  to="/cart">
+        <v-badge color="red" :content="user.cart">
+          <v-icon>mdi-cart-variant</v-icon>
+        </v-badge>
       </v-btn>
     </v-app-bar>
     <!-- 側邊欄 -->
@@ -57,11 +67,11 @@
         <v-list-item-group v-model="group" active-class="brown--text text--lighten2">
           <v-list-item to="/">
             <v-list-item-title>
-              <img class="drawer_logo" src="../assets/dofecalogo.png" alt="">
+              <img class="drawer_logo" src="../assets/dofecalogo.png" alt />
             </v-list-item-title>
           </v-list-item>
           <v-divider></v-divider>
-          <v-list-item class="mt-5"  to="/about">
+          <v-list-item class="mt-5" to="/about">
             <v-list-item-title>About Us</v-list-item-title>
           </v-list-item>
 
@@ -72,7 +82,6 @@
           <v-list-item to="/products">
             <v-list-item-title>All Products</v-list-item-title>
           </v-list-item>
-
         </v-list-item-group>
         <v-list-group :value="false" v-if="!user.isLogin">
           <template v-slot:activator>
