@@ -72,6 +72,15 @@ const routes = [
       login: true
     }
   },
+  {
+    path: '/orders',
+    name: 'Orders',
+    component: () => import(/* webpackChunkName: "orders" */ '../views/Orders.vue'),
+    meta: {
+      title: '訂單 | DOFECA',
+      login: true
+    }
+  },
   // 管理員
   {
     path: '/admin',

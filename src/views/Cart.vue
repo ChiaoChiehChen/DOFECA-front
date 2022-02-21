@@ -63,10 +63,11 @@
             <v-form>
               <v-row>
                 <v-col cols="12">
-                  <h1>訂購人資訊</h1>
+                  <h1>訂購資訊</h1>
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
+                    v-model="form.orderer"
                     label="姓名"
                     type="text"
                     hint="必填欄位"
@@ -76,6 +77,7 @@
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
+                    v-model="form.ordererPhone"
                     label="電話"
                     type="text"
                     hint="必填欄位"
@@ -85,6 +87,7 @@
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
+                    v-model="form.ordererEmail"
                     label="E-mail"
                     :rules="emailRules"
                     hint="請輸入正確信箱格式"
@@ -94,47 +97,7 @@
                 </v-col>
                 <v-col cols="12" >
                   <v-text-field
-                    label="地址"
-                    :rules="addressRules"
-                    hint="請輸入正確地址"
-                    prepend-icon="mdi-map-marker"
-                    required
-                    ></v-text-field>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12">
-                  <h1>收件人資訊</h1>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    label="姓名"
-                    type="text"
-                    hint="必填欄位"
-                    prepend-icon="mdi-account"
-                    required
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    label="電話"
-                    type="text"
-                    hint="必填欄位"
-                    prepend-icon="mdi-phone"
-                    required
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" md="4">
-                  <v-text-field
-                    label="E-mail"
-                    :rules="emailRules"
-                    hint="請輸入正確信箱格式"
-                    prepend-icon="mdi-email"
-                    required
-                    ></v-text-field>
-                </v-col>
-                <v-col cols="12" >
-                  <v-text-field
+                    v-model="form.ordererAddress"
                     label="地址"
                     :rules="addressRules"
                     hint="請輸入正確地址"
@@ -179,7 +142,16 @@ export default {
         { text: '產品價錢', value: 'price' },
         { text: '產品數量', value: 'quantity' },
         { text: '產品操作', value: 'action' }
-      ]
+      ],
+      form: {
+        orderer: '',
+        ordererPhone: '',
+        ordererMail: '',
+        ordererAddress: '',
+        recipient: '',
+        recipientPhone: '',
+        recipientAddress: ''
+      }
     }
   },
   computed: {
