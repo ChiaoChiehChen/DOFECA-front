@@ -85,6 +85,7 @@
                     ></v-textarea>
                   </v-col>
                   <v-col cols="12">
+                    {{ item }}
                     <img-inputer
                       class="img_file"
                       accept="image/*"
@@ -118,6 +119,7 @@
       <!-- 產品列表 -->
       <v-data-table class="mt-10" :headers="headers" :items="products">
         <template v-slot:item.image="{ item }">
+        <!-- {{ item}} -->
           <v-img v-if="item.image" :src="item.image" max-width="100" max-height="100px"></v-img>
         </template>
         <template v-slot:item.sell="{ item }">{{ item.sell ? 'V' : '' }}</template>
@@ -125,7 +127,7 @@
           <span v-if="item.category">{{ item.category.big }} - {{ item.category.small }}</span>
         </template>
         <template v-slot:item.action="{ item }">
-          <v-btn @click="editProduct(item._id)">編輯</v-btn>
+          <v-btn @click="editProduct(item)">編輯</v-btn>
           <v-btn @click="delProduct(item._id)">刪除</v-btn>
         </template>
       </v-data-table>
@@ -258,19 +260,19 @@ export default {
     },
     editProduct (id) {
       // console.log(id)
-      const index = this.products.findIndex(product => product._id === id)
+      // const index = this.products.findIndex(product => product._id === id)
       // 共用表格
       // console.log(index)
       // console.log(this.form.category)
       this.form = {
-        name: this.products[index].name,
-        price: this.products[index].price,
-        description: this.products[index].description,
+        name: id.name,
+        price: id.price,
+        description: id.description,
         image: null,
-        sell: this.products[index].sell,
+        sell: id.sell,
         category: { big: '', small: '' },
-        _id: this.products[index]._id,
-        index
+        _id: id._id
+        // index
       }
       // 其餘運算
       // this.form = { ...this.products[index], image: null, index: -1 }
@@ -316,24 +318,24 @@ export default {
         text: '取得商品失敗'
       })
     }
-  },
-  async updated () {
-    // 元件建立時，抓目前商品
-    try {
-      const { data } = await this.api.get('/products/all', {
-        headers: {
-          authorization: 'Bearer ' + this.user.token
-        }
-      })
-      this.products = data.result
-      // console.log(data.result)
-    } catch (error) {
-      this.$swal({
-        icon: 'error',
-        title: '錯誤',
-        text: '取得商品失敗'
-      })
-    }
   }
+  // async updated () {
+  //   // 元件建立時，抓目前商品
+  //   try {
+  //     const { data } = await this.api.get('/products/all', {
+  //       headers: {
+  //         authorization: 'Bearer ' + this.user.token
+  //       }
+  //     })
+  //     this.products = data.result
+  //     // console.log(data.result)
+  //   } catch (error) {
+  //     this.$swal({
+  //       icon: 'error',
+  //       title: '錯誤',
+  //       text: '取得商品失敗'
+  //     })
+  //   }
+  // }
 }
 </script>

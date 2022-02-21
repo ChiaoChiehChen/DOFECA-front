@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import store from '../store'
+import swal from 'sweetalert2'
 
 Vue.use(VueRouter)
 
@@ -123,6 +124,11 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   const user = store.getters['user/user']
   if (to.meta.login && !user.isLogin) {
+    swal.fire({
+      icon: 'error',
+      title: '錯誤',
+      text: '請先登入'
+    })
     next('/login')
   } else if (to.meta.admin && !user.isAdmin) {
     next('/')

@@ -60,6 +60,7 @@ export const getInfo = async ({ commit, state }) => {
 }
 
 export const addCart = async ({ commit, state }, data) => {
+  console.log(123)
   if (state.token.length === 0) {
     swal.fire({
       icon: 'error',

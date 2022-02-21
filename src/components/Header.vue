@@ -56,8 +56,8 @@
         <v-icon>mdi-cog</v-icon>
       </v-btn>
       <v-btn class="mt-3" icon  to="/cart">
-        <v-badge color="red" :content="user.cart">
-          <v-icon>mdi-cart-variant</v-icon>
+        <v-icon>mdi-cart-variant</v-icon>
+        <v-badge color="red" v-if="user.cart > 0" :content="user.cart">
         </v-badge>
       </v-btn>
     </v-app-bar>

@@ -73,7 +73,7 @@ export default {
     try {
       const { data } = await this.api.get('/products')
       this.products = data.result
-      console.log(this.products[0].category.big)
+      // console.log(this.products[0].category.big)
     } catch (error) {
       this.$swal({
         icon: 'error',
