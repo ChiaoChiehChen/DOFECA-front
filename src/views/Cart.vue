@@ -1,7 +1,7 @@
 <template>
   <v-main id="cart" class="mt-10" rounded-lg>
     <v-container>
-      <v-stepper class="stepper mx-auto" v-model="e1" max-width="1200px">
+      <v-stepper class="stepper mx-auto" v-model="e1" max-width="1200px" >
         <v-stepper-header>
           <v-stepper-step :complete="e1 > 1" step="1" editable>購物車</v-stepper-step>
 
@@ -72,6 +72,7 @@
                     label="收件人"
                     type="text"
                     hint="必填欄位"
+                    :rules="rules"
                     prepend-icon="mdi-account"
                     required
                   ></v-text-field>
@@ -81,6 +82,7 @@
                     v-model="form.phone"
                     label="收件人電話"
                     type="text"
+                    :rules="rules"
                     hint="必填欄位"
                     prepend-icon="mdi-phone"
                     required
@@ -114,7 +116,7 @@
                   <v-text-field
                     v-model="form.address"
                     label="收件地址"
-                    :rules="addressRules"
+                    :rules="rules"
                     hint="請輸入正確地址"
                     prepend-icon="mdi-map-marker"
                     required
@@ -141,14 +143,15 @@
             </div>
           </v-stepper-content>
 
+          <!-- 訂單確認 -->
           <v-stepper-content step="3">
             <h1 class="text-center">訂單確認</h1>
-            <v-simple-table>
+            <v-simple-table class="checkTable text-center">
               <template v-slot:default>
                 <thead>
                   <tr>
-                    <th class="text-left">name</th>
-                    <th class="text-left">Calories</th>
+                    <th class="text-center">項目</th>
+                    <th class="text-center">內容</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -171,31 +174,31 @@
                 </tbody>
                 <tbody>
                   <tr>
+                    <td>付款方式</td>
+                    <td>{{ form.payment }}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>總金額</td>
+                    <td>NT${{ total }}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
                     <td>送貨方式</td>
                     <td>{{ form.delivery }}</td>
                   </tr>
                 </tbody>
                 <tbody>
                   <tr>
-                    <td>付款方式</td>
-                    <td>{{ form.payment }}</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>付款方式</td>
-                    <td>{{ form.payment }}</td>
-                  </tr>
-                </tbody>
-                <tbody>
-                  <tr>
-                    <td>地址</td>
+                    <td>送貨地址</td>
                     <td>{{ form.address }}</td>
                   </tr>
                 </tbody>
                 <tbody>
                   <tr>
-                    <td>留言</td>
+                    <td>備註事項</td>
                     <td>{{ form.memo }}</td>
                   </tr>
                 </tbody>
@@ -236,7 +239,12 @@ export default {
         payment: '銀行轉帳',
         address: '',
         memo: ''
-      }
+      },
+      rules: [v => !!v || '必填欄位'],
+      emailRules: [
+        v => !!v || '信箱必填',
+        v => /.+@.+\..+/.test(v) || '請輸入正確信箱格式'
+      ]
     }
   },
   computed: {

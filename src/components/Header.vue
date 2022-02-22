@@ -50,7 +50,7 @@
         </v-list>
       </v-menu>
 
-      <v-btn class="mt-5" text v-if="user.isLogin">Order</v-btn>
+      <v-btn class="mt-5" text v-if="user.isLogin" to="/orders">Order</v-btn>
       <v-btn class="mt-5" text v-if="user.isLogin" @click="logout">Logout</v-btn>
       <v-btn class="mt-3" icon v-if="user.isLogin && user.isAdmin" to="/admin">
         <v-icon>mdi-cog</v-icon>

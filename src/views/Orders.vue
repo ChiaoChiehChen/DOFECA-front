@@ -1,6 +1,13 @@
 <template>
   <v-main id="orders">
-    <v-container></v-container>
+    <v-container>
+      <v-data-table :headers="headers" :items="orders">
+      <!-- {{ item }} -->
+        <template v-slot:item._id="{ item }">
+          {{item._id}}
+        </template>
+      </v-data-table>
+    </v-container>
   </v-main>
 </template>
 
@@ -8,7 +15,16 @@
 export default {
   data () {
     return {
-      orders: []
+      orders: [],
+      headers: [
+        { text: '訂單編號', value: '_id' },
+        { text: '訂單日期', value: 'date' },
+        { text: '購買商品', value: 'products' }
+        // { text: '取貨方式', value: 'delivery' },
+        // { text: '付款方式', value: 'payment' },
+        // { text: '總金額', value: 'total' }
+
+      ]
     }
   },
   async created () {

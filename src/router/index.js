@@ -81,6 +81,33 @@ const routes = [
       login: true
     }
   },
+  // {
+  //   path: '/member',
+  //   name: 'Member',
+  //   component: () => import(/* webpackChunkName: "member" */ '../views/Member.vue'),
+  //   children: [
+  //     {
+  //       path: '/memberOrders',
+  //       name: 'MemberOrders',
+  //       component: () => import(/* webpackChunkName: "member" */ '../views/MemberOrders.vue'),
+  //       meta: {
+  //         login: true,
+  //         admin: true,
+  //         title: '會員訂單 | DOFECA'
+  //       }
+  //     },
+  //     {
+  //       path: '/memberLessons',
+  //       name: 'MemberLessons',
+  //       component: () => import(/* webpackChunkName: "member" */ '../views/MemberLessons.vue'),
+  //       meta: {
+  //         login: true,
+  //         admin: true,
+  //         title: '會員課程訂單 | DOFECA'
+  //       }
+  //     }
+  //   ]
+  // },
   // 管理員
   {
     path: '/admin',

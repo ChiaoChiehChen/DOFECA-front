@@ -293,6 +293,7 @@ export default {
           title: '成功',
           text: '刪除成功'
         })
+        this.products.splice(this.form.index, 1)
       } catch (error) {
         this.$swal({
           icon: 'error',
