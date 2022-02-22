@@ -22,17 +22,6 @@
               </v-list-item>
             </v-list-item-group>
           </v-list>
-          <!-- <v-tabs vertical left>
-            <v-tab>
-              all
-            </v-tab>
-            <v-tab>
-              Option 2
-            </v-tab>
-            <v-tab>
-              Option 3
-            </v-tab>
-          </v-tabs>-->
         </v-col>
         <v-col cols="9">
           <v-row>

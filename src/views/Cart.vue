@@ -1,7 +1,7 @@
 <template>
-  <v-main id="cart">
+  <v-main id="cart" class="mt-10" rounded-lg>
     <v-container>
-      <v-stepper v-model="e1">
+      <v-stepper class="stepper mx-auto" v-model="e1" max-width="1200px">
         <v-stepper-header>
           <v-stepper-step :complete="e1 > 1" step="1" editable>購物車</v-stepper-step>
 
@@ -59,6 +59,7 @@
             </div>
           </v-stepper-content>
 
+          <!-- 訂購資訊 -->
           <v-stepper-content step="2">
             <v-form>
               <v-row>
@@ -67,8 +68,8 @@
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
-                    v-model="form.orderer"
-                    label="姓名"
+                    v-model="form.recipient"
+                    label="收件人"
                     type="text"
                     hint="必填欄位"
                     prepend-icon="mdi-account"
@@ -77,8 +78,8 @@
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
-                    v-model="form.ordererPhone"
-                    label="電話"
+                    v-model="form.phone"
+                    label="收件人電話"
                     type="text"
                     hint="必填欄位"
                     prepend-icon="mdi-phone"
@@ -87,39 +88,123 @@
                 </v-col>
                 <v-col cols="12" md="4">
                   <v-text-field
-                    v-model="form.ordererEmail"
-                    label="E-mail"
+                    v-model="form.email"
+                    label="收件人E-mail"
                     :rules="emailRules"
                     hint="請輸入正確信箱格式"
                     prepend-icon="mdi-email"
                     required
-                    ></v-text-field>
+                  ></v-text-field>
                 </v-col>
-                <v-col cols="12" >
+                <v-col cols="4">
+                  <h3>送貨方式</h3>
+                  <v-radio-group v-model="form.delivery" row>
+                    <v-radio label="工作室自取" value="工作室自取"></v-radio>
+                    <v-radio label="宅配" value="宅配"></v-radio>
+                  </v-radio-group>
+                </v-col>
+                <v-col cols="6">
+                  <h3>付款方式</h3>
+                  <v-radio-group v-model="form.payment" row>
+                    <v-radio label="銀行轉帳" value="銀行轉帳"></v-radio>
+                    <v-radio label="貨到付款" value="貨到付款"></v-radio>
+                  </v-radio-group>
+                </v-col>
+                <v-col cols="6">
                   <v-text-field
-                    v-model="form.ordererAddress"
-                    label="地址"
+                    v-model="form.address"
+                    label="收件地址"
                     :rules="addressRules"
                     hint="請輸入正確地址"
                     prepend-icon="mdi-map-marker"
                     required
-                    ></v-text-field>
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-textarea
+                    name="input-7-1"
+                    v-model="form.memo"
+                    label="留言區"
+                    hint="有什麼話想對賣家說嗎?"
+                    clear-icon="mdi-close-circle"
+                    clearable
+                    outlined
+                    auto-grow
+                  ></v-textarea>
                 </v-col>
               </v-row>
             </v-form>
 
             <div class="text-end">
               <v-btn text @click="e1 = 1">上一步</v-btn>&emsp;
-              <v-btn color="primary" @click="e1 = 3">下一步</v-btn>
+              <v-btn color="primary" @click="e1 = 3">提交訂單</v-btn>
             </div>
           </v-stepper-content>
 
           <v-stepper-content step="3">
-            <v-card class="mb-12" color="grey lighten-1" height="200px"></v-card>
+            <h1 class="text-center">訂單確認</h1>
+            <v-simple-table>
+              <template v-slot:default>
+                <thead>
+                  <tr>
+                    <th class="text-left">name</th>
+                    <th class="text-left">Calories</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>收件人</td>
+                    <td>{{ form.recipient }}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>電話</td>
+                    <td>{{ form.phone }}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>E-mail</td>
+                    <td>{{ form.email }}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>送貨方式</td>
+                    <td>{{ form.delivery }}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>付款方式</td>
+                    <td>{{ form.payment }}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>付款方式</td>
+                    <td>{{ form.payment }}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>地址</td>
+                    <td>{{ form.address }}</td>
+                  </tr>
+                </tbody>
+                <tbody>
+                  <tr>
+                    <td>留言</td>
+                    <td>{{ form.memo }}</td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
 
             <div class="text-end">
               <v-btn color="primary" @click="e1 = 2">上一步</v-btn>&emsp;
-              <v-btn text @click="checkout">提交訂單</v-btn>
+              <v-btn text @click="checkout">結帳</v-btn>
             </div>
           </v-stepper-content>
         </v-stepper-items>
@@ -144,13 +229,13 @@ export default {
         { text: '產品操作', value: 'action' }
       ],
       form: {
-        orderer: '',
-        ordererPhone: '',
-        ordererMail: '',
-        ordererAddress: '',
         recipient: '',
-        recipientPhone: '',
-        recipientAddress: ''
+        phone: '',
+        email: '',
+        delivery: '',
+        payment: '銀行轉帳',
+        address: '',
+        memo: ''
       }
     }
   },
@@ -183,6 +268,23 @@ export default {
           icon: 'error',
           title: '失敗',
           text: '修改購物車失敗'
+        })
+      }
+    },
+    async checkout () {
+      try {
+        await this.api.post('/orders', {}, {
+          headers: {
+            authorization: 'Bearer ' + this.user.token
+          }
+        })
+        // 導向訂單頁
+        this.$router.push('/orders')
+      } catch (error) {
+        this.$swal.fire({
+          icon: 'error',
+          title: '失敗',
+          text: '結帳失敗'
         })
       }
     }

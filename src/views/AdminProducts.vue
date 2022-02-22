@@ -85,7 +85,6 @@
                     ></v-textarea>
                   </v-col>
                   <v-col cols="12">
-                    {{ item }}
                     <img-inputer
                       class="img_file"
                       accept="image/*"
@@ -119,7 +118,7 @@
       <!-- 產品列表 -->
       <v-data-table class="mt-10" :headers="headers" :items="products">
         <template v-slot:item.image="{ item }">
-        <!-- {{ item}} -->
+        <!-- {{ item }} -->
           <v-img v-if="item.image" :src="item.image" max-width="100" max-height="100px"></v-img>
         </template>
         <template v-slot:item.sell="{ item }">{{ item.sell ? 'V' : '' }}</template>
@@ -203,7 +202,6 @@ export default {
       const fd = new FormData()
       for (const key in this.form) {
         // 如果key 為 產品分類
-        console.log(key.big)
         if (key === 'category') {
           // 換為 JSON 字符串
           fd.append(key, JSON.stringify(this.form[key]))
@@ -222,15 +220,19 @@ export default {
           this.products.push(data.result)
           // console.log(this.products)
         } else {
+          // 編輯的更新
           const { data } = await this.api.patch('/products/' + this.form._id, fd, {
             headers: {
               authorization: 'Bearer ' + this.user.token
             }
           })
-          // console.log(data.result.category)
-          this.products[this.form.index] = { ...this.form, image: data.result.image }
+
+          // .splice(索引值,刪除幾個,新增)
+          this.products.splice(this.form.index, 1, data.result)
         }
         this.dialog = false
+
+        this.resetForm()
       } catch (error) {
         this.$swal({
           icon: 'error',
@@ -241,9 +243,9 @@ export default {
       this.btnSubmitting = false
     },
     // 取消
-    resetForm (event) {
+    resetForm () {
+      // 按送出按鈕，重置按鈕不能按
       if (this.btnSubmitting) {
-        event.preventDefault()
         return
       }
       this.form = {
@@ -258,21 +260,20 @@ export default {
       }
       this.$refs.observer.reset()
     },
-    editProduct (id) {
-      // console.log(id)
-      // const index = this.products.findIndex(product => product._id === id)
+    // 編輯
+    editProduct (item) {
+      // const index = this.products.findIndex(product => product._id === item._id)
+      const index = this.products.indexOf(item)
       // 共用表格
-      // console.log(index)
-      // console.log(this.form.category)
       this.form = {
-        name: id.name,
-        price: id.price,
-        description: id.description,
+        name: item.name,
+        price: item.price,
+        description: item.description,
         image: null,
-        sell: id.sell,
-        category: { big: '', small: '' },
-        _id: id._id
-        // index
+        sell: item.sell,
+        category: item.category,
+        _id: item._id,
+        index
       }
       // 其餘運算
       // this.form = { ...this.products[index], image: null, index: -1 }
@@ -301,6 +302,14 @@ export default {
       }
     }
   },
+  // 每次按新增按鈕都會是空的
+  watch: {
+    dialog (val) {
+      if (val === false) {
+        this.resetForm()
+      }
+    }
+  },
   async created () {
     // 元件建立時，抓目前商品
     try {
@@ -319,23 +328,5 @@ export default {
       })
     }
   }
-  // async updated () {
-  //   // 元件建立時，抓目前商品
-  //   try {
-  //     const { data } = await this.api.get('/products/all', {
-  //       headers: {
-  //         authorization: 'Bearer ' + this.user.token
-  //       }
-  //     })
-  //     this.products = data.result
-  //     // console.log(data.result)
-  //   } catch (error) {
-  //     this.$swal({
-  //       icon: 'error',
-  //       title: '錯誤',
-  //       text: '取得商品失敗'
-  //     })
-  //   }
-  // }
 }
 </script>
