@@ -3,27 +3,22 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-btn @click="ji()">hy</v-btn>
           <v-data-table :headers="headers" :items="orders">
-          <!-- {{ item }} -->
-            <template v-slot:item._id="{ item }">
-              {{ item._id }}
-            </template>
-            <template v-slot:item.date="{item}">
-              {{ new Date(item.date).toLocaleString( 'zh-tw') }}
-            </template>
-            <template v-slot:item.products="{item}">
+            <!-- {{ item }} -->
+            <template v-slot:item._id="{ item }">{{ item._id }}</template>
+            <template v-slot:item.date="{ item }">{{ new Date(item.date).toLocaleString('zh-tw') }}</template>
+            <template v-slot:item.products="{ item }">
               <ul class="px-0">
-                <li class="list" v-for="product in item.products" :key="product._id">
-                  {{ product.product.name }} x {{ product.quantity }}
-                </li>
+                <li
+                  class="list"
+                  v-for="product in item.products"
+                  :key="product._id"
+                >{{ product.product.name }} x {{ product.quantity }}</li>
               </ul>
             </template>
-
-            <!-- <template v-slot:item.sum="{item}">
-              <div> {{ total }}</div>
-            </template> -->
-
+            <template v-slot:item.sum="{ item }">
+              <p>{{ item.total }}</p>
+            </template>
           </v-data-table>
         </v-col>
       </v-row>
@@ -36,28 +31,15 @@ export default {
   data () {
     return {
       orders: [],
+      // total: 0,
       headers: [
         { text: '訂單編號', value: '_id' },
         { text: '訂單日期', value: 'date' },
         { text: '購買商品', value: 'products', align: 'start' },
-        { text: '總金額', value: 'sum' },
         { text: '取貨方式', value: 'delivery' },
-        { text: '付款方式', value: 'payment' }
+        { text: '付款方式', value: 'payment' },
+        { text: '總金額', value: 'sum' }
       ]
-    }
-  },
-  methods: {
-    ji () {
-      console.log(this.products)
-      console.log(this.total)
-      console.log(this.orders)
-    }
-  },
-  computed: {
-    total () {
-      return this.orders.products.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue.quantity * currentValue.product.price
-      }, 0)
     }
   },
   async created () {
@@ -67,7 +49,14 @@ export default {
           authorization: 'Bearer ' + this.user.token
         }
       })
-      this.orders = data.result
+      // this.orders = data.result
+      // console.log(data.result)
+      this.orders = data.result.map((order) => {
+        order.total = order.products.reduce((accumulator, currentValue) => {
+          return accumulator + currentValue.quantity * currentValue.product.price
+        }, 0)
+        return order
+      })
     } catch (error) {
       this.$swal({
         icon: 'error',
