@@ -119,6 +119,7 @@
                     :rules="rules"
                     hint="請輸入正確地址"
                     prepend-icon="mdi-map-marker"
+                    type="text"
                     required
                   ></v-text-field>
                 </v-col>
@@ -132,6 +133,7 @@
                     clearable
                     outlined
                     auto-grow
+                    type="text"
                   ></v-textarea>
                 </v-col>
               </v-row>
@@ -146,7 +148,7 @@
           <!-- 訂單確認 -->
           <v-stepper-content step="3">
             <h1 class="text-center">訂單確認</h1>
-            <v-simple-table class="checkTable text-center">
+            <v-simple-table class="checkTable text-center" :items="form">
               <template v-slot:default>
                 <thead>
                   <tr>
@@ -236,7 +238,7 @@ export default {
         phone: '',
         email: '',
         delivery: '',
-        payment: 'ATM轉帳',
+        payment: '',
         address: '',
         memo: ''
       },
@@ -281,14 +283,16 @@ export default {
     },
     async checkout () {
       try {
-        await this.api.post('/orders', this.from, {
+        await this.api.post('/orders', this.form, {
           headers: {
             authorization: 'Bearer ' + this.user.token
           }
         })
         // 導向訂單頁
+        console.log(this.form)
         this.$router.push('/orders')
       } catch (error) {
+        console.log(error)
         this.$swal.fire({
           icon: 'error',
           title: '失敗',

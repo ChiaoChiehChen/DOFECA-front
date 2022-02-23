@@ -1,6 +1,6 @@
 <template>
   <v-main id="member">
-    <v-container>
+    <v-container >
       <v-row>
         <v-col cols="2">
           <v-list flat>
