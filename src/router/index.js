@@ -72,42 +72,42 @@ const routes = [
       login: true
     }
   },
-  {
-    path: '/orders',
-    name: 'Orders',
-    component: () => import(/* webpackChunkName: "orders" */ '../views/Orders.vue'),
-    meta: {
-      title: '訂單 | DOFECA',
-      login: true
-    }
-  },
   // {
-  //   path: '/member',
-  //   name: 'Member',
-  //   component: () => import(/* webpackChunkName: "member" */ '../views/Member.vue'),
-  //   children: [
-  //     {
-  //       path: '/memberOrders',
-  //       name: 'MemberOrders',
-  //       component: () => import(/* webpackChunkName: "member" */ '../views/MemberOrders.vue'),
-  //       meta: {
-  //         login: true,
-  //         admin: true,
-  //         title: '會員訂單 | DOFECA'
-  //       }
-  //     },
-  //     {
-  //       path: '/memberLessons',
-  //       name: 'MemberLessons',
-  //       component: () => import(/* webpackChunkName: "member" */ '../views/MemberLessons.vue'),
-  //       meta: {
-  //         login: true,
-  //         admin: true,
-  //         title: '會員課程訂單 | DOFECA'
-  //       }
-  //     }
-  //   ]
+  //   path: '/orders',
+  //   name: 'Orders',
+  //   component: () => import(/* webpackChunkName: "orders" */ '../views/MemberOrders.vue'),
+  //   meta: {
+  //     title: '訂單 | DOFECA',
+  //     login: true
+  //   }
   // },
+  {
+    path: '/member',
+    name: 'Member',
+    component: () => import(/* webpackChunkName: "member" */ '../views/Member.vue'),
+    children: [
+      {
+        path: 'memberOrders',
+        name: 'MemberOrders',
+        component: () => import(/* webpackChunkName: "member" */ '../views/MemberOrders.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: '會員訂單 | DOFECA'
+        }
+      },
+      {
+        path: 'memberLessons',
+        name: 'MemberLessons',
+        component: () => import(/* webpackChunkName: "member" */ '../views/MemberLessons.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: '會員課程訂單 | DOFECA'
+        }
+      }
+    ]
+  },
   // 管理員
   {
     path: '/admin',

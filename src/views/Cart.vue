@@ -108,7 +108,7 @@
                 <v-col cols="6">
                   <h3>付款方式</h3>
                   <v-radio-group v-model="form.payment" row>
-                    <v-radio label="銀行轉帳" value="銀行轉帳"></v-radio>
+                    <v-radio label="ATM轉帳" value="ATM轉帳"></v-radio>
                     <v-radio label="貨到付款" value="貨到付款"></v-radio>
                   </v-radio-group>
                 </v-col>
@@ -236,7 +236,7 @@ export default {
         phone: '',
         email: '',
         delivery: '',
-        payment: '銀行轉帳',
+        payment: 'ATM轉帳',
         address: '',
         memo: ''
       },
@@ -281,7 +281,7 @@ export default {
     },
     async checkout () {
       try {
-        await this.api.post('/orders', {}, {
+        await this.api.post('/orders', this.from, {
           headers: {
             authorization: 'Bearer ' + this.user.token
           }

@@ -29,6 +29,7 @@
       </v-toolbar-items>
       <v-spacer></v-spacer>
 
+<!-- 登入前 -->
       <v-menu open-on-hover bottom offset-y v-if="!user.isLogin">
         <template v-slot:activator="{ on, attrs }">
           <v-btn class="mt-3 hidden-md-and-down" icon v-bind="attrs" v-on="on">
@@ -49,9 +50,27 @@
           </v-list-item>
         </v-list>
       </v-menu>
+      <!-- 登入後 -->
+      <v-menu open-on-hover bottom offset-y v-if="user.isLogin">
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn class="mt-3 hidden-md-and-down" icon v-bind="attrs" v-on="on" to="/member">
+            <v-icon>mdi-account</v-icon>
+          </v-btn>
+        </template>
+        <v-list>
+          <v-list-item class="d-flex">
+            <v-list-item-title>
+              <v-btn class="mt-5" text v-if="user.isLogin" to="/member/memberOrders">Order</v-btn>
+            </v-list-item-title>
+          </v-list-item>
+          <v-list-item class="d-flex">
+            <v-list-item-title>
+              <v-btn class="mt-5" text v-if="user.isLogin" @click="logout">Logout</v-btn>
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
 
-      <v-btn class="mt-5" text v-if="user.isLogin" to="/orders">Order</v-btn>
-      <v-btn class="mt-5" text v-if="user.isLogin" @click="logout">Logout</v-btn>
       <v-btn class="mt-3" icon v-if="user.isLogin && user.isAdmin" to="/admin">
         <v-icon>mdi-cog</v-icon>
       </v-btn>
