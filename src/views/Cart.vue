@@ -209,7 +209,7 @@
 
             <div class="text-end">
               <v-btn color="primary" @click="e1 = 2">上一步</v-btn>&emsp;
-              <v-btn text @click="checkout">結帳</v-btn>
+              <v-btn text @click="checkout" :disabled="products.length === 0">結帳</v-btn>
             </div>
           </v-stepper-content>
         </v-stepper-items>
@@ -288,9 +288,11 @@ export default {
             authorization: 'Bearer ' + this.user.token
           }
         })
+        // console.log(this.form)
         // 導向訂單頁
-        console.log(this.form)
-        this.$router.push('/orders')
+        this.$router.push('/member')
+        // 購物車歸0
+        this.$store.commit('user/updateCart', 0)
       } catch (error) {
         console.log(error)
         this.$swal.fire({

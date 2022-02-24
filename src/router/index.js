@@ -92,7 +92,6 @@ const routes = [
         component: () => import(/* webpackChunkName: "member" */ '../views/MemberOrders.vue'),
         meta: {
           login: true,
-          admin: true,
           title: '會員訂單 | DOFECA'
         }
       },
@@ -102,7 +101,6 @@ const routes = [
         component: () => import(/* webpackChunkName: "member" */ '../views/MemberLessons.vue'),
         meta: {
           login: true,
-          admin: true,
           title: '會員課程訂單 | DOFECA'
         }
       }

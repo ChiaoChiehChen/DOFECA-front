@@ -12,7 +12,7 @@
         </v-col>
         <v-col cols="12" md="6">
           <h1>{{ name }}</h1>
-          <h3>NT$ {{ price }}</h3>
+          <h3>NT$&emsp;{{ price }}</h3>
           <v-text-field
             v-model.number="quantity"
             label="數量"

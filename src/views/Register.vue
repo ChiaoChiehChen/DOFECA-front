@@ -17,16 +17,22 @@
                       v-model="form.email"
                       label="E-mail"
                       :rules="emailRules"
-                      :state="state.email"
                       hint="請輸入正確信箱格式"
                       prepend-icon="mdi-email"
+                      required
+                    ></v-text-field>
+                    <v-text-field
+                      v-model="form.name"
+                      label="Your Name"
+                      :rules="nameRules"
+                      hint="名字必填"
+                      prepend-icon="mdi-account"
                       required
                     ></v-text-field>
                     <v-text-field
                       v-model="form.account"
                       label="Create New Account"
                       :rules="inputRules"
-                      :state="state.account"
                       hint="帳號長度為 4 到 20 個字"
                       prepend-icon="mdi-account-circle"
                       required
@@ -37,7 +43,6 @@
                       :type="showPassword ? 'text' : 'password'"
                       label="Create Password"
                       :rules="inputRules"
-                      :state="state.password"
                       hint="密碼長度為 4 到 20 個字"
                       prepend-icon="mdi-lock"
                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -60,7 +65,7 @@
 </template>
 
 <script>
-import validator from 'validator'
+// import validator from 'validator'
 
 export default {
   data () {
@@ -69,7 +74,8 @@ export default {
       form: {
         account: '',
         password: '',
-        email: ''
+        email: '',
+        name: ''
       },
       showPassword: false,
       inputRules: [
@@ -79,18 +85,21 @@ export default {
       emailRules: [
         v => !!v || '必填',
         v => /.+@.+\..+/.test(v) || '請輸入正確信箱格式'
+      ],
+      nameRules: [
+        v => !!v || '必填'
       ]
     }
   },
-  computed: {
-    state () {
-      return {
-        account: this.form.account.length === 0 ? null : this.form.account.length >= 4 && this.form.account.length <= 20,
-        password: this.form.password.length === 0 ? null : this.form.password.length >= 4 && this.form.password.length <= 20,
-        email: this.form.email.length === 0 ? null : validator.isEmail(this.form.email)
-      }
-    }
-  },
+  // computed: {
+  //   state () {
+  //     return {
+  //       account: this.form.account.length === 0 ? null : this.form.account.length >= 4 && this.form.account.length <= 20,
+  //       password: this.form.password.length === 0 ? null : this.form.password.length >= 4 && this.form.password.length <= 20,
+  //       email: this.form.email.length === 0 ? null : validator.isEmail(this.form.email)
+  //     }
+  //   }
+  // },
   methods: {
     async register () {
       const valid = this.$refs.form.validate()

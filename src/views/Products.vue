@@ -8,14 +8,14 @@
               <v-list-item @click="filter=''">
                   <v-list-item-title >ALL</v-list-item-title>
               </v-list-item>
-              <v-list-item  @click="filter='深焙'">
-                  <v-list-item-title>深焙</v-list-item-title>
+              <v-list-item  @click="filter='咖啡豆'">
+                  <v-list-item-title>咖啡豆</v-list-item-title>
               </v-list-item>
-              <v-list-item @click="filter='中焙'">
-                  <v-list-item-title >中焙</v-list-item-title>
+              <v-list-item @click="filter='咖啡粉'">
+                  <v-list-item-title >咖啡粉</v-list-item-title>
               </v-list-item>
-              <v-list-item @click="filter='淺焙'">
-                  <v-list-item-title >淺焙</v-list-item-title>
+              <v-list-item @click="filter='膠囊咖啡'">
+                  <v-list-item-title >膠囊咖啡</v-list-item-title>
               </v-list-item>
               <v-list-item @click="filter='設備'">
                   <v-list-item-title>設備</v-list-item-title>

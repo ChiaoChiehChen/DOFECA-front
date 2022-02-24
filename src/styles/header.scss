@@ -1,26 +1,33 @@
 #header{
   width: 100%;
   margin: auto;
-  color: #9d8460;
+  color: rgb(157, 132, 96);
   z-index:100;
   .logo{
-    width: 60%;
+    width: 65%;
     .logo_img{
       width: 100%;
       object-fit: cover;
     }
   }
-  .nav-btn{
-    font-weight: 500;
+  .header_icon:hover{
+    color:rgb(195, 169, 147);
+    // .v-icon:hover{
+    //   color:rgb(195, 169, 147)
+    // }
   }
 }
-.drawer{
+.nav_burger{
   z-index: 1000;
   position: fixed;
   top: 0;
   left: 0;
-  .drawer_logo{
-    width: 100%;
-    object-fit: cover;
+  .drawer{
+    width: 80%;
+    margin: auto;
+    .drawer_logo{
+      width: 100%;
+      object-fit: cover;
+    }
   }
 }

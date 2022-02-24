@@ -14,7 +14,7 @@
           <h2>{{ product.name }}</h2>
         </v-card-title>
         <v-card-text>
-          <h3>{{ 'NT$-' + product.price }}</h3>
+          <h3>{{ 'NT$' + '&emsp;' + product.price }}</h3>
         </v-card-text>
       </v-card>
     </template>

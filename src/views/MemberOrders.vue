@@ -13,11 +13,13 @@
                   class="list"
                   v-for="product in item.products"
                   :key="product._id"
-                >{{ product.product.name }} x {{ product.quantity }}</li>
+                >
+                  {{ product.product.name }} x {{ product.quantity }} 個
+                </li>
               </ul>
             </template>
             <template v-slot:item.sum="{ item }">
-              <p>{{ item.total }}</p>
+              <p> NT$&emsp;{{ item.total }}</p>
             </template>
           </v-data-table>
         </v-col>
@@ -31,10 +33,9 @@ export default {
   data () {
     return {
       orders: [],
-      // total: 0,
       headers: [
-        { text: '訂單編號', value: '_id' },
         { text: '訂單日期', value: 'date' },
+        { text: '訂單編號', value: '_id' },
         { text: '購買商品', value: 'products', align: 'start' },
         { text: '取貨方式', value: 'delivery' },
         { text: '付款方式', value: 'payment' },
