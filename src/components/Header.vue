@@ -113,7 +113,7 @@
       </div>
       <v-list nav dense>
         <!-- 登入前 -->
-        <v-list-group :value="false" v-if="!user.isLogin" active-class="brown--text text--lighten2">
+        <v-list-group class="nav_list" :value="false" v-if="!user.isLogin" active-class="brown--text text--lighten2">
           <template v-slot:activator>
             <v-list-item-title>Member</v-list-item-title>
           </template>
@@ -125,7 +125,7 @@
           </v-list-item>
         </v-list-group>
         <!-- 登入後member -->
-        <v-list-group :value="false" v-if="user.isLogin" active-class="brown--text text--lighten2">
+        <v-list-group class="nav_list" :value="false" v-if="user.isLogin" active-class="brown--text text--lighten2">
           <template v-slot:activator>
             <v-list-item-title>Member</v-list-item-title>
           </template>
@@ -136,9 +136,9 @@
             <v-list-item-title>MemberLessons</v-list-item-title>
           </v-list-item>
         </v-list-group>
-        <v-list-item-group v-model="group" active-class="brown--text text--lighten2">
+        <v-list-item-group class="nav_list" v-model="group" active-class="brown--text text--lighten2">
           <!-- <v-divider></v-divider> -->
-          <v-list-item class to="/about">
+          <v-list-item to="/about">
             <v-list-item-title>About Us</v-list-item-title>
           </v-list-item>
 
