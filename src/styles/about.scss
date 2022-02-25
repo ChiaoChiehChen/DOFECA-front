@@ -1,0 +1,15 @@
+#about{
+  margin-top: 80px;
+  .aaa{
+    margin-top: 20px;
+    @include md{
+      margin-top: 0;
+      height: 100%;
+    }
+    h1{
+      @include md{
+        font-size: 20px;
+      }
+    }
+  }
+}

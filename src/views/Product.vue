@@ -21,14 +21,22 @@
             :rules="quantityRules"
             hint="必填欄位"
             required
-          ></v-text-field>
+            hide-spin-buttons
+          >
+            <template v-slot:prepend>
+              <v-icon @click="quantity--">mdi-minus</v-icon>
+            </template>
+            <template v-slot:append>
+              <v-icon @click="quantity++">mdi-plus</v-icon>
+            </template>
+          </v-text-field>
           <v-btn @click="addCart">
             加入購物車
             <v-icon>mdi-cart-variant</v-icon>
           </v-btn>
         </v-col>
         <v-col cols="12">
-          <br>
+          <br />
           <!-- 換行 white-space:pre-->
           <p style="white-space:pre">{{ description }}</p>
         </v-col>

@@ -1,6 +1,11 @@
 #login{
-  // height: calc(100vh - 80px);
-  margin-top: 80px;
+  margin-top: 40px;
+  h1{
+    font-size: 40px;
+    @include md{
+      font-size: 50px;
+    }
+  }
   .login_con{
     height: 100%;
     display: flex;
@@ -20,11 +25,11 @@
       }
     }
     .login_btn:hover{
-      background-color: rgba(161, 79, 11, 0.5);
+      background-color: rgba(179, 91, 19, 0.5);
       text-shadow: 
       1px 1px 1px rgba(0, 0, 0, 0.5),
-      0 0 5px rgba(161, 79, 11, 1),
-      0 0 25px rgba(161, 79, 11, 1);
+      0 0 5px rgba(179, 91, 19, 1),
+      0 0 25px rgba(179, 91, 19, 1);
       // box-shadow:
       //   0 0 5px rgba(161, 79, 11, 1),
       //   0 0 25px rgba(161, 79, 11, 0.8),
@@ -34,6 +39,12 @@
       position: absolute;
     }
     .reg_box{
+      width: 400px;
+      .v-card__title {
+        @include md{
+          width: 500px;
+        }
+      }
       // margin: auto;
       .reg_btn:hover{
         font-size: 16px;

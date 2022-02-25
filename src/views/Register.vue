@@ -1,12 +1,12 @@
 <template>
-  <v-container id="register">
-    <div class="reg_con">
+  <v-main id="register">
+    <v-container class="reg_con">
       <h1 class="text-center">Join us!</h1>
-      <v-row width="400" class="mt-16  ">
+      <v-row width="400" class="mt-10  ">
         <v-col class="d-flex justify-center align-center" cols="12">
           <v-hover>
             <template v-slot:default="{ hover }">
-              <v-card class="reg_box mx-auto" width="420" height="450" :elevation="hover ? 10 : 2">
+              <v-card class="reg_box mx-auto" width="420" height="500" :elevation="hover ? 10 : 2">
                 <v-card-title>
                   <h1 class="mx-auto mt-5">Register</h1>
                 </v-card-title>
@@ -60,8 +60,8 @@
           </v-hover>
         </v-col>
       </v-row>
-    </div>
-  </v-container>
+    </v-container>
+  </v-main>
 </template>
 
 <script>

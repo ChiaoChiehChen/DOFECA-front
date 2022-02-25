@@ -1,7 +1,13 @@
 #register{
+  background: url('../assets/cafebeans_bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
   // height: calc(100vh - 80px);
-  margin-top: 80px;
+  margin-top: 40px;
   .reg_con{
     height: 100%;
+    h1{
+      font-size: 50px;
+    }
   }
 }

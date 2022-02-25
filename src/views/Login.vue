@@ -1,14 +1,14 @@
 <template>
-  <v-main>
-    <v-container id="login">
+  <v-main id="login">
+    <v-container>
       <h1 class="text-center">Welcome back</h1>
       <div class="login_con">
         <v-row class="mt-md-5 mt-lg-16">
-          <v-col cols="12" lg="2"></v-col>
-          <v-col class="d-flex justify-center align-center" cols="12" lg="4">
+          <v-col cols="12" md="0" lg="2"></v-col>
+          <v-col class="d-flex justify-center align-center" cols="12" md="6" lg="4">
             <v-hover>
               <template v-slot:default="{ hover }">
-                <v-card class="rounded-lg" width="400" height="400" :elevation="hover ? 10 : 2">
+                <v-card class="rounded-lg" width="400" height="450" :elevation="hover ? 10 : 2">
                   <v-card-title>
                     <h1 class="mx-auto mt-5">Login</h1>
                   </v-card-title>
@@ -51,18 +51,20 @@
             </v-hover>
           </v-col>
 
-          <v-col class="d-flex justify-center align-center" cols="12" lg="4">
-            <v-card class="reg_box" width="400" flat>
+          <v-col class="d-flex justify-center align-center" cols="12" md="4">
+            <v-card class="reg_box" flat>
               <v-card-title>
                 <h1>New to DOFECA ?</h1>
               </v-card-title>
               <v-card-text>
                 <p class="text-h6">Create an account to enjoy the benefits!</p>
-                <v-btn class="reg_btn mt-12" color="primary" plain text to="/register">Register</v-btn>
+                <div class="text-center mt-n6">
+                  <v-btn class="reg_btn mt-12" color="#8D6E63" plain text to="/register">Register</v-btn>
+                </div>
               </v-card-text>
             </v-card>
           </v-col>
-          <v-col cols="12" lg="2"></v-col>
+          <v-col cols="12" md="0" lg="2"></v-col>
         </v-row>
       </div>
     </v-container>

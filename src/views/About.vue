@@ -1,5 +1,22 @@
 <template>
-  <div id="about">
-    <h1>This is an about page</h1>
-  </div>
+  <v-main id="about">
+    <v-container>
+      <v-row justify="center">
+        <v-col cols="12" md="6">
+          <v-img src="../assets/ilovecafe.jpg"></v-img>
+        </v-col>
+        <v-col align-center cols="12" md="6">
+          <div class="aaa d-flex justify-center align-center">
+            <h1 class="text-center">
+              DOFECA，有品味的好咖啡!
+              <br />我們是一群熱愛咖啡的好夥伴
+              <br />因為咖啡,我們相遇了
+              <br />
+              <br />咖啡為您我相伴相隨美好情感的生活享樂。
+            </h1>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-main>
 </template>
