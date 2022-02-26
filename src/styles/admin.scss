@@ -1,0 +1,11 @@
+#admin{
+  .tab_list{
+    text-align: center;
+    .tab_name{
+      font-size: 15px;
+      @include md{
+        font-size: 18px;
+      }
+    }
+  }
+}

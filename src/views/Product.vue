@@ -7,13 +7,14 @@
         </template>
       </v-overlay>
       <v-row>
-        <v-col cols="12" md="6">
+        <v-col class="mt-5" cols="12" md="6">
           <v-img :src="image"></v-img>
         </v-col>
         <v-col cols="12" md="6">
-          <h1>{{ name }}</h1>
-          <h3>NT$&emsp;{{ price }}</h3>
+          <h1 class="name mt-3">{{ name }}</h1>
+          <h3 class="price mt-3">NT$&emsp;{{ price }}</h3>
           <v-text-field
+            class="mt-5"
             v-model.number="quantity"
             label="數量"
             type="number"
@@ -30,16 +31,23 @@
               <v-icon @click="quantity++">mdi-plus</v-icon>
             </template>
           </v-text-field>
-          <v-btn @click="addCart">
+          <div class="text-center mt-3">
+          <v-btn  @click="addCart">
             加入購物車
             <v-icon>mdi-cart-variant</v-icon>
           </v-btn>
+          </div>
+          <div class="my-8">
+            <p>商品描述</p>
+            <!-- 換行 white-space:pre-->
+          <p class="description" style="white-space:pre">{{ description }}</p>
+          </div>
         </v-col>
-        <v-col cols="12">
+        <!-- <v-col cols="12">
           <br />
-          <!-- 換行 white-space:pre-->
+          換行 white-space:pre
           <p style="white-space:pre">{{ description }}</p>
-        </v-col>
+        </v-col> -->
       </v-row>
     </v-container>
   </v-main>

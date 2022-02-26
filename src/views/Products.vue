@@ -2,9 +2,9 @@
   <v-main id="products" class="mt-10">
     <v-container>
       <v-row>
-        <v-col cols="2">
-          <v-list flat>
-            <v-list-item-group color="#9d8460">
+        <v-col cols="12" md="2">
+        <v-list flat >
+            <v-list-item-group class="products_menu" color="#9d8460">
               <v-list-item @click="filter=''">
                   <v-list-item-title >ALL</v-list-item-title>
               </v-list-item>
@@ -23,9 +23,9 @@
             </v-list-item-group>
           </v-list>
         </v-col>
-        <v-col cols="9">
+        <v-col cols="12" md="10">
           <v-row>
-            <v-col cols="12" md="6" lg="3" v-for="product in filterItems" :key="product._id">
+            <v-col cols="12" sm="6" lg="3" v-for="product in filterItems" :key="product._id">
               <ProductCard :product="product"></ProductCard>
             </v-col>
           </v-row>
