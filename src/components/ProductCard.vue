@@ -5,7 +5,7 @@
       <v-card class="card-product ma-5" width="400">
         <v-img class="card-product-img" :src="product.image">
           <v-fade-transition>
-            <v-overlay v-if="hover" absolute color="#036358">
+            <v-overlay v-if="hover" absolute >
               <v-img
               class="bean"
               v-if="product.category.big === '咖啡豆'"

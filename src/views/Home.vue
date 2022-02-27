@@ -1,54 +1,79 @@
 <template>
-  <div id="home">
-    <div>
-      <swiper class="swiper chiao_swiper" :options="swiperOption">
+  <v-main id="home">
+    <v-container fluid class="ma-0 pa-0">
+      <swiper class="swiper chiao_swiper" :options="chiaoSwiper">
         <swiper-slide>
-          <v-parallax class="swiper_img" height="1400" src="../assets/swiper2.jpg"></v-parallax>
+          <v-parallax class="swiper_img" height="700" src="../assets/coffee3.jpg">
+            <v-row align="center" justify="center">
+              <v-col class="text-center" cols="12">
+                <div class="slogan">
+                  <h1 class="slogan_text font-weight-bold">
+                    03/04/2022
+                    <br />Free Shipping Day&emsp;...
+                    <v-icon class="slogan_text" color="#e29578">mdi-truck</v-icon>
+                  </h1>
+                  <v-btn
+                    class="btn mt-10"
+                    elevation="3"
+                    rounded
+                    dark
+                    color="brown"
+                    to="/products"
+                  >Go shopping</v-btn>
+                </div>
+              </v-col>
+            </v-row>
+          </v-parallax>
           <v-img></v-img>
         </swiper-slide>
         <swiper-slide>
-          <v-parallax class="swiper_img" height="1400" src="../assets/swiper1.jpg"></v-parallax>
+          <v-parallax class="swiper_img" height="700" src="../assets/coffee6.jpg">
+            <v-row>
+              <v-col cols="12"></v-col>
+            </v-row>
+          </v-parallax>
         </swiper-slide>
         <swiper-slide>
-          <v-parallax class="swiper_img" height="1400" src="../assets/swiper4.jpg"></v-parallax>
+          <v-parallax class="swiper_img" height="700" src="../assets/coffee11.jpg"></v-parallax>
         </swiper-slide>
         <swiper-slide>
-          <v-parallax class="swiper_img" height="1400" src="../assets/swiper3.jpg"></v-parallax>
+          <v-parallax class="swiper_img" height="700" src="../assets/coffee12.jpg"></v-parallax>
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
         <div class="swiper-button-prev" slot="button-prev"></div>
         <div class="swiper-button-next" slot="button-next"></div>
       </swiper>
-    </div>
+    </v-container>
 
-    <v-container id="second" class="home_coffee ma-0 pa-0" fluid>
+    <v-container id="second" class="mx-0 pa-0" fluid>
       <v-row justify="center" align-content="center">
         <v-col class="home_col text-center" cols="6" md="3">
-          <router-link to="/">
-            <img class="beans" src="../assets/cafebean.png" alt />
-            <p class="text-center" color="secondary">coffee powder</p>
+          <router-link to="/products">
+            <img class="bean" src="../assets/bean.png" alt />
+            <h3 class="bean_name text-center" color="secondary">Coffee Beans</h3>
           </router-link>
         </v-col>
         <v-col class="home_col text-center" cols="6" md="3" align-self="center">
-          <router-link to="/">
+          <router-link to="/products">
             <img class="powder" src="../assets/coffeepowder.png" alt />
-            <p class="text-center" color="secondary">coffee powder</p>
+            <h3 class="powder_name text-center" color="secondary">Coffee Powder</h3>
           </router-link>
         </v-col>
         <v-col class="home_col text-center" cols="6" md="3" align-self="end">
-          <router-link to="/">
-            <img class="cupsule" src="../assets/cupsulecoffee.png" alt />
-            <p class="text-center" color="secondary">coffee powder</p>
+          <router-link to="/products">
+            <img class="capsule" src="../assets/cupsulecoffee.png" alt />
+            <h3 class="capsule_name text-center" color="secondary">Coffee Capsule</h3>
           </router-link>
         </v-col>
-        <v-col class="home_coltext-center" cols="6" md="3" align-self="center">
-          <router-link to="/">
-            <img class="powder" src="../assets/coffeepowder.png" alt />
-            <p class="text-center" color="secondary">coffee powder</p>
+        <v-col class="home_col text-center" cols="6" md="3" align-self="center">
+          <router-link to="/products">
+            <img class="machine" src="../assets/coffeemachine.png" alt />
+            <h3 class="machine_name text-center" color="secondary">Coffee Equipment</h3>
           </router-link>
         </v-col>
       </v-row>
     </v-container>
+    <!-- 最新消息 -->
     <v-container id="third">
       <v-card color="basil">
         <v-card-title class="text-center justify-center py-6">
@@ -73,7 +98,9 @@
                     <tbody>
                       <tr v-for="list in lists" :key="list.name">
                         <td>{{ list.name }}</td>
-                        <td><v-btn to="/news">{{ list.calories }}</v-btn></td>
+                        <td>
+                          <v-btn to="/news">{{ list.calories }}</v-btn>
+                        </td>
                       </tr>
                     </tbody>
                   </template>
@@ -85,62 +112,112 @@
       </v-card>
     </v-container>
     <v-container id="fourth">
-      <div class="describe">
-        <p class="text-h6 text-center">
-        Every day, with love and attention, we roast specialty coffees for you. We carefully select each lot, develop a roasting profile for each type of grain, carefully check the quality. Only after that we are ready to offer this coffee to you.
-      </p>
-      </div>
+      <v-row justify="center" align="center">
+        <v-col cols="12">
+          <v-parallax class="map" height="400" src="../assets/coffeemap.jpg"></v-parallax>
+        </v-col>
+        <v-col cols="12" md="6">
+          <div class="describe">
+            <h1
+              class="text-center"
+            >Every day, with love and attention, we roast specialty coffees for you. We carefully select each lot, develop a roasting profile for each type of grain, carefully check the quality. Only after that we are ready to offer this coffee to you.</h1>
+          </div>
+        </v-col>
+        <v-col cols="12" md="6">
+          <video
+            src="../assets/production ID_4795016.mp4"
+            width="100%"
+            controls
+            autoplay="autoplay"
+          ></video>
+        </v-col>
+      </v-row>
     </v-container>
-    <v-container>
-      <h1 class="text-center">New Products</h1>
-      <v-item-group
-      v-model="selected"
-      multiple
-      >
-        <v-row class="pt-16">
-          <v-col
-            v-for="card in cards"
-            :key="card.title">
-            <v-card
-            class="mx-auto"
-            width="300">
-              <v-item v-slot="{ active, toggle }">
-                <v-img
-                class="text-right"
-                :src="card.src"
-                width="300"
-                @click="toggle"
-                >
-                  <v-btn
-                      icon
-                      dark
-                    >
-                      <v-icon>
-                        {{ active ? 'mdi-heart' : 'mdi-heart-outline' }}
-                      </v-icon>
-                    </v-btn>
-                </v-img>
-              </v-item>
-              <v-card-title
-              v-text="card.title"></v-card-title>
-              <v-card-text
-              v-text="card.text"
-              ></v-card-text>
-              <v-card-actions>
-                <v-btn>
-                  加入購物車
-                  <v-icon>mdi-cart-variant</v-icon>
-                </v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-item-group>
+    <v-container id="fifth">
+      <v-row>
+        <v-col cols="12">
+          <h1 class="text-center">New Products</h1>
+          <swiper class="swiper" :options="productsSwiper">
+            <swiper-slide>
+              <router-link to="/product/621a04b1b83e847d9f51605c">
+                <v-card>
+                  <v-img src="../assets/bean_dark.png"></v-img>
+                  <h1 class="text-center mt-5">
+                    蘇門答臘咖啡豆
+                    <br />NT$390
+                  </h1>
+                </v-card>
+              </router-link>
+            </swiper-slide>
+            <swiper-slide>
+              <router-link to="/product/621a04b1b83e847d9f51605c">
+                <v-card>
+                  <v-img src="../assets/bean_dark.png"></v-img>
+                  <h1 class="text-center mt-5">
+                    蘇門答臘咖啡豆
+                    <br />NT$390
+                  </h1>
+                </v-card>
+              </router-link>
+            </swiper-slide>
+            <swiper-slide>
+              <router-link to="/product/621a04b1b83e847d9f51605c">
+                <v-card>
+                  <v-img src="../assets/bean_dark.png"></v-img>
+                  <h1 class="text-center mt-5">
+                    蘇門答臘咖啡豆
+                    <br />NT$390
+                  </h1>
+                </v-card>
+              </router-link>
+            </swiper-slide>
+            <swiper-slide>
+              <router-link to="/product/621a04b1b83e847d9f51605c">
+                <v-card>
+                  <v-img src="../assets/bean_dark.png"></v-img>
+                  <h1 class="text-center mt-5">
+                    蘇門答臘咖啡豆
+                    <br />NT$390
+                  </h1>
+                </v-card>
+              </router-link>
+            </swiper-slide>
+            <swiper-slide>
+              <router-link to="/product/621a04b1b83e847d9f51605c">
+                <v-card>
+                  <v-img src="../assets/bean_dark.png"></v-img>
+                  <h1 class="text-center mt-5">
+                    蘇門答臘咖啡豆
+                    <br />NT$390
+                  </h1>
+                </v-card>
+              </router-link>
+            </swiper-slide>
+            <swiper-slide>
+              <router-link to="/product/621a04b1b83e847d9f51605c">
+                <v-card>
+                  <v-img src="../assets/bean_dark.png"></v-img>
+                  <h1 class="text-center mt-5">
+                    蘇門答臘咖啡豆
+                    <br />NT$390
+                  </h1>
+                </v-card>
+              </router-link>
+            </swiper-slide>
+          </swiper>
+        </v-col>
+      </v-row>
+    </v-container>
+    <v-container id="sixth">
+      <v-row class="pt-16">
+        <v-col></v-col>
+      </v-row>
+
       <div>
         <v-btn class="pt-16" text plain>VIEW ALL PRODUCTS</v-btn>
       </div>
     </v-container>
-    <v-container id="fifth">
+    <v-container id="seventh">
       <v-row>
         <v-col class="text-center" cols="12" md="6" order-md="2">
           <img src="https://picsum.photos/450/600/?random=10" />
@@ -154,7 +231,7 @@
       </v-row>
     </v-container>
     <v-container></v-container>
-  </div>
+  </v-main>
 </template>
 
 <script>
@@ -170,11 +247,12 @@ export default {
   },
   data () {
     return {
-      swiperOption: {
+      chiaoSwiper: {
         spaceBetween: 0,
         effect: 'fade',
         centeredSlides: true,
         parallax: true,
+        loop: true,
         autoplay: {
           delay: 5000,
           disableOnInteraction: false
@@ -186,6 +264,34 @@ export default {
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev'
+        }
+      },
+      // 下面
+      productsSwiper: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        freeMode: true,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 20
+          },
+          600: {
+            slidesPerView: 2
+          },
+          960: {
+            slidesPerView: 3
+          },
+          1264: {
+            slidesPerView: 4
+          },
+          1904: {
+            slidesPerView: 5
+          }
         }
       },
       tab: null,
@@ -213,13 +319,7 @@ export default {
           name: 'Gingerbread',
           calories: 356
         }
-      ],
-      cards: [
-        { title: 'coffee beans', src: 'https://picsum.photos/300/200/?random=10', text: '500元' },
-        { title: 'coffee powder', src: 'https://picsum.photos/300/200/?random=1', text: '890元' },
-        { title: 'coffee machine', src: 'https://picsum.photos/300/200/?random=8', text: '650元' }
-      ],
-      selected: []
+      ]
     }
   }
 }

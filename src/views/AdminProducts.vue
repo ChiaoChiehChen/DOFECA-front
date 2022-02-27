@@ -1,10 +1,19 @@
 <template>
-  <div id="adminProducts">
+  <div id="adminproducts">
     <v-container>
       <v-row justify="center">
         <v-dialog v-model="dialog" max-width="700px">
           <template v-slot:activator="{ on, adds }">
-            <v-btn v-bind="adds" v-on="on">新增</v-btn>
+            <v-btn
+              class="mt-2"
+              color="#8e412e"
+              v-bind="adds"
+              v-on="on"
+              elevation="3"
+              outlined
+              >
+              新增
+            </v-btn>
           </template>
           <v-card>
             <v-card-actions>
@@ -14,10 +23,10 @@
               </v-btn>
             </v-card-actions>
             <v-card-title v-if="form._id.length > 0">
-              <span>編輯商品</span>
+              編輯商品
             </v-card-title>
             <v-card-title v-else>
-              <span>新增商品</span>
+              新增商品
             </v-card-title>
             <v-divider></v-divider>
             <v-card-text>
@@ -84,9 +93,8 @@
                       auto-grow
                     ></v-textarea>
                   </v-col>
-                  <v-col cols="12">
+                  <v-col cols="12" class="img_file">
                     <img-inputer
-                      class="img_file"
                       accept="image/*"
                       v-model="form.image"
                       theme="light"
@@ -109,25 +117,51 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn @click="resetForm" :disabled="btnSubmitting">重置</v-btn>
-              <v-btn @click="submitModal" :disabled="btnSubmitting">送出</v-btn>
+              <v-btn
+                @click="resetForm"
+                :disabled="btnSubmitting"
+                color="#c1121f"
+                dark
+                raised
+              >
+                重置
+              </v-btn>
+              <v-btn
+                @click="submitModal"
+                :disabled="btnSubmitting"
+                raised
+                color="#25a244"
+                dark
+              >
+                送出
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
       </v-row>
       <!-- 產品列表 -->
-      <v-data-table class="mt-10" :headers="headers" :items="products">
+      <v-data-table class="product_table mt-10" :headers="headers" :items="products">
         <template v-slot:item.image="{ item }">
         <!-- {{ item }} -->
           <v-img v-if="item.image" :src="item.image" max-width="100" max-height="100px"></v-img>
         </template>
-        <template v-slot:item.sell="{ item }">{{ item.sell ? 'V' : '' }}</template>
+        <template v-slot:item.name="{ item }">
+          <div>{{item.name}}</div>
+        </template>
+        <template v-slot:item.price="{ item }">
+          <div>NT${{item.price}}</div>
+        </template>
+        <template v-slot:item.sell="{ item }">
+          <div class=text-center>{{ item.sell ? 'V' : '' }}</div>
+        </template>
         <template v-slot:item.category="{ item }">
           <span v-if="item.category">{{ item.category.big }} - {{ item.category.small }}</span>
         </template>
         <template v-slot:item.action="{ item }">
-          <v-btn @click="editProduct(item)">編輯</v-btn>
-          <v-btn @click="delProduct(item._id)">刪除</v-btn>
+          <v-btn class="mb-2" color="#457b9d" dark  @click="editProduct(item)">
+            編輯
+          </v-btn>
+          <v-btn color="#f7b267"  @click="delProduct(item._id)">刪除</v-btn>
         </template>
       </v-data-table>
     </v-container>

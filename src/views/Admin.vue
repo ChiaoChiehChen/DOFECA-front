@@ -1,5 +1,5 @@
 <template>
-  <v-main id="admin">
+  <v-main id="admin" class="mt-10">
     <v-container>
       <v-row>
         <v-col cols="12">
