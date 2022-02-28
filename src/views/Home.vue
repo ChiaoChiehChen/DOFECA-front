@@ -116,14 +116,20 @@
         <v-col cols="12">
           <v-parallax class="map" height="400" src="../assets/coffeemap.jpg"></v-parallax>
         </v-col>
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="6" order-md="2">
           <div class="describe">
-            <h1
-              class="text-center"
-            >Every day, with love and attention, we roast specialty coffees for you. We carefully select each lot, develop a roasting profile for each type of grain, carefully check the quality. Only after that we are ready to offer this coffee to you.</h1>
+            <h1 class="text-center">
+              All you need to feel better is coffee!<br>
+            </h1>
+            <h1 class="text-center">
+              Life is short. Stay awake for it.<br>
+            </h1>
+            <h1 class="text-center">
+              Caffeine isn't a drug, it's a vitamin!
+            </h1>
           </div>
         </v-col>
-        <v-col cols="12" md="6">
+        <v-col cols="12" md="6" order-md="1">
           <video
             src="../assets/production ID_4795016.mp4"
             width="100%"
@@ -134,15 +140,17 @@
       </v-row>
     </v-container>
     <v-container id="fifth">
-      <v-row>
-        <v-col cols="12">
-          <h1 class="text-center">New Products</h1>
-          <swiper class="swiper" :options="productsSwiper">
+      <v-row class="mt-10" justify="center" align="center">
+        <v-col cols="12" class="swiper_col">
+          <h1 class="newProducts text-center">New Products</h1>
+          <swiper class="products_swiper swiper mt-10" :options="productsSwiper">
             <swiper-slide>
               <router-link to="/product/621a04b1b83e847d9f51605c">
-                <v-card>
-                  <v-img src="../assets/bean_dark.png"></v-img>
-                  <h1 class="text-center mt-5">
+                <v-card width="400"  class="mx-auto">
+                  <div>
+                    <v-img class="bean_img" src="../assets/bean_dark.png"></v-img>
+                  </div>
+                  <h1 class="products_name text-center mt-5">
                     蘇門答臘咖啡豆
                     <br />NT$390
                   </h1>
@@ -151,81 +159,98 @@
             </swiper-slide>
             <swiper-slide>
               <router-link to="/product/621a04b1b83e847d9f51605c">
-                <v-card>
-                  <v-img src="../assets/bean_dark.png"></v-img>
-                  <h1 class="text-center mt-5">
-                    蘇門答臘咖啡豆
-                    <br />NT$390
+                <v-card width="400"  class="mx-auto">
+                  <v-img src="../assets/bean_medium.png"></v-img>
+                  <h1 class="products_name text-center mt-5">
+                    哥倫比亞咖啡豆
+                    <br />NT$650
                   </h1>
                 </v-card>
               </router-link>
             </swiper-slide>
             <swiper-slide>
               <router-link to="/product/621a04b1b83e847d9f51605c">
-                <v-card>
-                  <v-img src="../assets/bean_dark.png"></v-img>
-                  <h1 class="text-center mt-5">
-                    蘇門答臘咖啡豆
-                    <br />NT$390
+                <v-card width="400" class="mx-auto">
+                    <v-img class="powder_img" src="../assets/powder_medium.png"></v-img>
+                  <h1 class="products_name text-center mt-5">
+                    日安吾愛
+                    <br />NT$330
                   </h1>
                 </v-card>
               </router-link>
             </swiper-slide>
             <swiper-slide>
               <router-link to="/product/621a04b1b83e847d9f51605c">
-                <v-card>
-                  <v-img src="../assets/bean_dark.png"></v-img>
-                  <h1 class="text-center mt-5">
-                    蘇門答臘咖啡豆
-                    <br />NT$390
+                <v-card width="400"  class="mx-auto">
+                  <v-img src="../assets/bean_lightlb.png"></v-img>
+                  <h1 class="products_name text-center mt-5">
+                    衣索比亞 草莓波波
+                    <br />NT$650
                   </h1>
                 </v-card>
               </router-link>
             </swiper-slide>
             <swiper-slide>
               <router-link to="/product/621a04b1b83e847d9f51605c">
-                <v-card>
-                  <v-img src="../assets/bean_dark.png"></v-img>
-                  <h1 class="text-center mt-5">
-                    蘇門答臘咖啡豆
-                    <br />NT$390
+                <v-card width="400"  class="mx-auto">
+                  <v-img class="capsule_img" src="../assets/capsule_m.jpg"></v-img>
+                  <h1 class="products_name text-center mt-5">
+                    維也納黎尼茲歐
+                    <br />NT$240
                   </h1>
                 </v-card>
               </router-link>
             </swiper-slide>
             <swiper-slide>
               <router-link to="/product/621a04b1b83e847d9f51605c">
-                <v-card>
-                  <v-img src="../assets/bean_dark.png"></v-img>
-                  <h1 class="text-center mt-5">
-                    蘇門答臘咖啡豆
-                    <br />NT$390
+                <v-card width="400" class="mx-auto">
+                    <v-img class="powder_img" src="../assets/powder_light.png"></v-img>
+                  <h1 class="products_name text-center mt-5">
+                    衣索比亞 耶加雪菲 春樹
+                    <br />NT$290
                   </h1>
                 </v-card>
               </router-link>
             </swiper-slide>
+            <div class="swiper-pagination" slot="pagination"></div>
           </swiper>
+          <div class="text-center">
+            <v-btn class="products_btn mt-5" color="brown" dark x-large to="/products">VIEW ALL PRODUCTS</v-btn>
+          </div>
         </v-col>
       </v-row>
     </v-container>
-    <v-container id="sixth">
-      <v-row class="pt-16">
-        <v-col></v-col>
-      </v-row>
 
-      <div>
-        <v-btn class="pt-16" text plain>VIEW ALL PRODUCTS</v-btn>
-      </div>
-    </v-container>
     <v-container id="seventh">
       <v-row>
         <v-col class="text-center" cols="12" md="6" order-md="2">
-          <img src="https://picsum.photos/450/600/?random=10" />
+          <v-row>
+            <v-col cols="4">
+              <v-img src="../assets/coffeeshop4.jpeg"></v-img>
+            </v-col>
+            <v-col cols="8">
+              <v-img src="../assets/coffeeshop6.jpeg"></v-img>
+            </v-col>
+            <v-col cols="8">
+              <v-img src="../assets/coffee9.jpg"></v-img>
+            </v-col>
+            <v-col cols="4">
+              <v-img src="../assets/coffeeshop5.jpeg"></v-img>
+            </v-col>
+            <v-col cols="6">
+              <v-img src="../assets/coffeeshop2.jpeg"></v-img>
+            </v-col>
+            <v-col cols="6">
+              <v-img src="../assets/coffeeshop7.jpg"></v-img>
+            </v-col>
+          </v-row>
         </v-col>
         <v-col class="home_intro" cols="12" md="6" order-md="1">
-          <div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem, ad aliquid saepe expedita, magnam voluptas debitis sed, inventore odit illum aperiam tempora. Eius, blanditiis quam. Quae quod harum deserunt iure debitis eligendi saepe, tempore explicabo minus eaque dolorem vero aut pariatur rerum perferendis hic, consequatur labore mollitia numquam libero. Odio id molestias pariatur accusamus eos alias possimus architecto quibusdam. Laboriosam amet dolor ut libero culpa impedit modi, voluptate pariatur facere. Error eligendi perspiciatis laudantium rerum aliquid repellat, animi voluptatibus hic quasi voluptatem quam molestiae ad dolores, illo delectus impedit enim deserunt praesentium optio perferendis aperiam! Corporis alias veniam voluptatem excepturi?</p>
-            <v-btn color="#9d8460" text plain>Full Story</v-btn>
+          <div class="describe text-center">
+            <h1 class="text-center">
+              Every day, with love and attention, we roast specialty coffees for you. We carefully select each lot, develop a roasting profile for each type of grain, carefully check the quality. Only after that we are ready to offer this coffee to you.
+            </h1>
+            <v-btn class="mt-16" color="#9d8460" outlined x-large to="/about">Full Story</v-btn>
           </div>
         </v-col>
       </v-row>
@@ -269,11 +294,15 @@ export default {
       // 下面
       productsSwiper: {
         slidesPerView: 4,
-        spaceBetween: 30,
+        spaceBetween: 40,
         freeMode: true,
         autoplay: {
           delay: 4000,
           disableOnInteraction: false
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
         },
         breakpoints: {
           320: {

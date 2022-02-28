@@ -180,21 +180,49 @@
 
   #fourth {
     padding-top: 50px;
-    .map{
-    }
     .describe {
       width: 450px;
       margin: auto;
       h1{
         @include md {
-          font-size: 20px;
+          font-size: 24px;
         }
       }
     }
   }
 
-  .fifth{
-    
+  #fifth{
+    .swiper_col{
+      .newProducts{
+        font-size: 40px;
+      }
+      .products_swiper{
+        height:480px;
+        @include sm{
+          height: 380px;
+        }
+        a{
+          text-decoration: none;
+        }
+        .products_name{
+          font-size: 20px;
+        }
+        .powder_img,
+        .capsule_img{
+          width: 400px;
+          height: 356px;
+          @include sm{
+            height: 231px;
+          }
+          @include md{
+            height: 236px;
+          }
+        }
+      }
+      .products_btn{
+        font-weight: 700;
+      }
+    }
   }
 
   #seventh {
@@ -203,6 +231,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      .describe {
+        width: 450px;
+        margin: auto;
+        h1{
+          @include md {
+            font-size: 28px;
+          }
+        }
+      }
     }
   }
 }

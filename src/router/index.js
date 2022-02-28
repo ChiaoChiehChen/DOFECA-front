@@ -141,6 +141,26 @@ const routes = [
           admin: true,
           title: '訂單管理 | DOFECA'
         }
+      },
+      {
+        path: 'adminlessons',
+        name: 'AdminLessons',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminLessons.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: '課程管理 | DOFECA'
+        }
+      },
+      {
+        path: 'adminlessonsorders',
+        name: 'AdminLessonsOrders',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminLessonsOrders.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: '課程訂單管理 | DOFECA'
+        }
       }
     ]
   },
