@@ -5,6 +5,15 @@ export default () => {
     account: '',
     role: 0,
     email: '',
-    cart: 0
+    cart: 0,
+    lessons: {
+      lessonName: '',
+      price: '',
+      date: '',
+      applicant: '',
+      phone: '',
+      email: '',
+      memo: ''
+    }
   }
 }

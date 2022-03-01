@@ -2,7 +2,7 @@
 <router-link id="productcard" :to='"/product/" + product._id'>
   <v-hover>
     <template v-slot:default="{ hover }">
-      <v-card class="card-product ma-5" width="400">
+      <v-card class="card-product ma-5" flat width="400">
         <v-img class="card-product-img" :src="product.image">
           <v-fade-transition>
             <v-overlay v-if="hover" absolute >

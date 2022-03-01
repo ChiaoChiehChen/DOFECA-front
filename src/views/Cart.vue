@@ -290,7 +290,7 @@ export default {
         })
         // console.log(this.form)
         // 導向訂單頁
-        this.$router.push('/member')
+        this.$router.push('/member/memberOrders')
         // 購物車歸0
         this.$store.commit('user/updateCart', 0)
       } catch (error) {

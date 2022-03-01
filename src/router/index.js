@@ -48,6 +48,14 @@ const routes = [
     }
   },
   {
+    path: '/newsForm',
+    name: 'NewsForm',
+    component: () => import(/* webpackChunkName: "newsForm" */ '../views/NewsForm.vue'),
+    meta: {
+      title: '最新消息 | DOFECA'
+    }
+  },
+  {
     path: '/products',
     name: 'Products',
     component: () => import(/* webpackChunkName: "products" */ '../views/Products.vue'),

@@ -31,3 +31,14 @@ export const updateCart = (state, data) => {
   // 購物車數量更新
   state.cart = data
 }
+
+export const appointment = (state, data) => {
+  state.lessons.lessonName = data.lessonName
+  state.lessons.price = data.price
+  state.lessons.date = data.date
+  state.lessons.applicant = data.applicant
+  state.lessons.phone = data.phone
+  state.lessons.l = data.email
+  state.lessons.email = data.email
+  state.lessons.memo = data.memo
+}

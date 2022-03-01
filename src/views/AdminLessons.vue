@@ -31,7 +31,7 @@
                 <v-row>
                   <v-col cols="12">
                     <v-text-field
-                      v-model="form.lessons"
+                      v-model="form.lessonName"
                       label="課程名稱"
                       type="text"
                       :rules="nameRules"
@@ -83,8 +83,9 @@
       </v-row>
       產品列表
       <v-data-table class="lesson_table mt-10" :headers="headers" :items="lessons">
-        <template v-slot:item.lessons="{ item }">
-          <div>{{item.lessons}}</div>
+        <template v-slot:item.lessonName="{ item }">
+        <!-- {{item}} -->
+          <div>{{item.lessonName}}</div>
         </template>
         <template v-slot:item.price="{ item }">
           <div>NT${{item.price}}</div>
@@ -102,12 +103,12 @@ export default {
   data () {
     return {
       headers: [
-        { text: '課程名稱', value: 'lessons' },
+        { text: '課程名稱', value: 'lessonName' },
         { text: '產品價錢', value: 'price' },
         { text: '產品操作', value: 'action' }
       ],
       form: {
-        name: '',
+        lessonName: '',
         price: null,
         _id: '',
         index: -1
@@ -130,7 +131,7 @@ export default {
     async submitModal (event) {
       event.preventDefault()
       // 檢查如果必填欄位未填寫
-      if (!this.form.lessons || !this.form.price) {
+      if (!this.form.lessonName || !this.form.price) {
         this.$swal({
           icon: 'error',
           title: '錯誤',
@@ -140,15 +141,15 @@ export default {
       }
       this.btnSubmitting = true
       // 建立FormData物件
-      const fd = new FormData()
-      for (const key in this.form) {
-        if (key !== '_id') {
-          fd.append(key, this.form[key])
-        }
-      }
+      // const fd = new FormData()
+      // for (const key in this.form) {
+      //   if (key !== '_id') {
+      //     fd.append(key, this.form[key])
+      //   }
+      // }
       try {
         if (this.form._id.length === 0) {
-          const { data } = await this.api.post('/lessons', fd, {
+          const { data } = await this.api.post('/lessons', this.form, {
             headers: {
               authorization: 'Bearer ' + this.user.token
             }
@@ -160,10 +161,12 @@ export default {
 
         this.resetForm()
       } catch (error) {
+        console.log(error)
         this.$swal({
           icon: 'error',
           title: '錯誤',
-          text: error.response.data.message
+          // text: error.response.data.message
+          text: 'hoidfsoif'
         })
       }
       this.btnSubmitting = false
@@ -181,30 +184,30 @@ export default {
         index: -1
       }
       this.$refs.observer.reset()
-    }
+    },
     // 刪除
-    // async delLesson (id) {
-    //   // console.log(123)
-    //   try {
-    //     await this.api.delete('/lessons/' + id, {
-    //       headers: {
-    //         authorization: 'Bearer ' + this.user.token
-    //       }
-    //     })
-    //     this.$swal({
-    //       icon: 'success',
-    //       title: '成功',
-    //       text: '刪除成功'
-    //     })
-    //     this.lessons.splice(this.form.index, 1)
-    //   } catch (error) {
-    //     this.$swal({
-    //       icon: 'error',
-    //       title: '錯誤',
-    //       text: '刪除失敗'
-    //     })
-    //   }
-    // }
+    async delLesson (id) {
+      // console.log(123)
+      try {
+        await this.api.delete('/lessons/' + id, {
+          headers: {
+            authorization: 'Bearer ' + this.user.token
+          }
+        })
+        this.$swal({
+          icon: 'success',
+          title: '成功',
+          text: '刪除成功'
+        })
+        this.lessons.splice(this.form.index, 1)
+      } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: '錯誤',
+          text: '刪除失敗'
+        })
+      }
+    }
   },
   // 每次按新增按鈕都會是空的
   watch: {
