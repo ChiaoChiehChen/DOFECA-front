@@ -32,7 +32,7 @@ export const updateCart = (state, data) => {
   state.cart = data
 }
 
-export const appointment = (state, data) => {
+export const lessons = (state, data) => {
   state.lessons.lessonName = data.lessonName
   state.lessons.price = data.price
   state.lessons.date = data.date

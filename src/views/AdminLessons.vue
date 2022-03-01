@@ -166,7 +166,7 @@ export default {
           icon: 'error',
           title: '錯誤',
           // text: error.response.data.message
-          text: 'hoidfsoif'
+          text: 'error.response.data.message'
         })
       }
       this.btnSubmitting = false

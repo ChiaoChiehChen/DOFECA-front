@@ -1,5 +1,19 @@
 <template>
-  <v-main>
+  <v-main id="news">
+    <v-container>
+      <v-row>
+        <v-col>
+          <v-img src="../assets/lessons.png"></v-img>
+        </v-col>
+        <v-col cols="12" class="mt-5">
+          <div class="activity">
+            <p class="text-center">想更了解一杯咖啡，如何從產區生豆變成香氣四溢的熟豆嗎?</p>
+            <p class="text-center">淺顯易懂的基礎烘豆課程，讓您快速了解烘豆原理</p>
+          </div>
+        </v-col>
+        <v-col></v-col>
+      </v-row>
+    </v-container>
     <v-container>
       <v-row>
         <v-col cols="12">
@@ -12,7 +26,7 @@
               <div>NT${{ item.price }}</div>
             </template>
             <template v-slot:item.action="{ item }">
-              <v-btn color="#f7b267" @click="applyLessons(item)">報名</v-btn>
+              <v-btn color="#f7b267" @click="signUp(item)">報名</v-btn>
             </template>
           </v-data-table>
         </v-col>
@@ -23,6 +37,7 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
@@ -39,19 +54,25 @@ export default {
     }
   },
   methods: {
-    async applyLessons () {
-      try {
-
-      } catch (error) {
-
+    signUp (item) {
+      if (this.user.token.length === 0) {
+        this.$swal({
+          icon: 'error',
+          title: '錯誤',
+          text: '請先登入'
+        })
+        this.$route.push('/')
+      } else {
+        this.$store.commit('user/lessons', this.lessons)
+        this.$router.push('/newsForm')
       }
     }
+
   },
   async created () {
     try {
       const { data } = await this.api.get('/lessons')
       this.lessons = data.result
-      // console.log(this.products[0].category.big)
     } catch (error) {
       this.$swal({
         icon: 'error',

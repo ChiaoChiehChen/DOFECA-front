@@ -15,7 +15,8 @@
               <v-tab class="tab_name" to="/admin/adminproducts">產品管理</v-tab>
               <v-tab class="tab_name" to="/admin/adminorders">訂單管理</v-tab>
               <v-tab class="tab_name" to="/admin/adminlessons">文章管理</v-tab>
-              <v-tab class="tab_name">報名訂單管理</v-tab>
+              <v-tab class="tab_name" to="/admin/adminlessonsorders">報名訂單管理</v-tab>
+              <v-tab class="tab_name" to="/admin/adminsubscribes">訂閱名單</v-tab>
             </v-tabs>
           </v-sheet>
         </v-col>

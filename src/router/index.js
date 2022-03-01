@@ -52,7 +52,7 @@ const routes = [
     name: 'NewsForm',
     component: () => import(/* webpackChunkName: "newsForm" */ '../views/NewsForm.vue'),
     meta: {
-      title: '最新消息 | DOFECA'
+      title: '最新消息訂單 | DOFECA'
     }
   },
   {
@@ -164,6 +164,16 @@ const routes = [
         path: 'adminlessonsorders',
         name: 'AdminLessonsOrders',
         component: () => import(/* webpackChunkName: "admin" */ '../views/AdminLessonsOrders.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: '課程訂單管理 | DOFECA'
+        }
+      },
+      {
+        path: 'adminsubscribes',
+        name: 'AdminSubscribes',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/AdminSubscribes.vue'),
         meta: {
           login: true,
           admin: true,

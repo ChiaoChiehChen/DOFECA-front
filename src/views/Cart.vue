@@ -294,7 +294,7 @@ export default {
         // 購物車歸0
         this.$store.commit('user/updateCart', 0)
       } catch (error) {
-        console.log(error)
+        // console.log(error)
         this.$swal.fire({
           icon: 'error',
           title: '失敗',
