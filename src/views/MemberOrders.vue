@@ -1,31 +1,27 @@
 <template>
-  <v-main id="memberOrders">
-    <v-container>
-      <v-row>
-        <v-col>
-          <v-data-table :headers="headers" :items="orders">
-            <!-- {{ item }} -->
-            <template v-slot:item._id="{ item }">{{ item._id }}</template>
-            <template v-slot:item.date="{ item }">{{ new Date(item.date).toLocaleString('zh-tw') }}</template>
-            <template v-slot:item.products="{ item }">
-              <ul class="px-0">
-                <li
-                  class="list"
-                  v-for="product in item.products"
-                  :key="product._id"
-                >
-                  {{ product.product.name }} x {{ product.quantity }} 個
-                </li>
-              </ul>
-            </template>
-            <template v-slot:item.sum="{ item }">
-              <p> NT$&emsp;{{ item.total }}</p>
-            </template>
-          </v-data-table>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-main>
+  <v-container id="memberOrders">
+    <v-row>
+      <v-col>
+        <v-data-table :headers="headers" :items="orders">
+          <!-- {{ item }} -->
+          <template v-slot:item._id="{ item }">{{ item._id }}</template>
+          <template v-slot:item.date="{ item }">{{ new Date(item.date).toLocaleString('zh-tw') }}</template>
+          <template v-slot:item.products="{ item }">
+            <ul class="px-0">
+              <li
+                class="list"
+                v-for="product in item.products"
+                :key="product._id"
+              >{{ product.product.name }} x {{ product.quantity }} 個</li>
+            </ul>
+          </template>
+          <template v-slot:item.sum="{ item }">
+            <p>NT$&emsp;{{ item.total }}</p>
+          </template>
+        </v-data-table>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

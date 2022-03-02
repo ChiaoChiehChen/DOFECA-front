@@ -1,0 +1,9 @@
+#member{
+  .list{
+    padding-top: 50px;
+    display: flex;
+    @include md{
+      display: block;
+    }
+  }
+}

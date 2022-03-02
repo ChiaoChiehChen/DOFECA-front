@@ -12,7 +12,11 @@ import 'swiper/css/swiper.css'
 import mixin from './mixin.js'
 import ImgInputer from 'vue-img-inputer'
 import 'vue-img-inputer/dist/index.css'
+import 'animate.css/source/animate.css'
+// import 'animate.css'
+import VueWow from 'vue-wow'
 
+Vue.use(VueWow)
 Vue.component('ImgInputer', ImgInputer)
 Vue.use(VueSweetalert2)
 Vue.use(VueAwesomeSwiper)

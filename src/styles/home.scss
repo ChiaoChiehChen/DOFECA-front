@@ -1,38 +1,43 @@
 #home {
   .chiao_swiper {
     .swiper_img {
-      .v-parallax__image-container img {
-        object-fit: cover;
-        // width: 100vw;
-        width: 100%;
-        height: 1080px;
+      .v-parallax__image-container {
+        width: 100vw;
+        img {
+          object-fit: cover;
+          width: 100vw;
+          height: 1080px;
+          // @include lg{
+          //   width: 1920px;
+          // }
+        }
       }
-      .v-parallax__content{
+      .v-parallax__content {
         // color:#e29578;
         // color:#9c6644;
-        color:#2c2c2c;
+        color: #2c2c2c;
       }
-      .slogan{
+      .slogan {
         position: relative;
         // width: 400px;
         // height: 500px;
         // background-color: whitesmoke;
         // opacity: 0.4;
         // margin: auto;
-        .slogan_text{
+        .slogan_text {
           font-size: 60px;
-          @include md{
+          @include md {
             font-size: 100px;
           }
         }
-        .btn{
+        .btn {
           width: 180px;
           height: 60px;
           font-size: 20px;
         }
       }
-      .slogan::before{
-        content: '';
+      .slogan::before {
+        content: "";
         width: 451px;
         height: 400px;
         background-color: whitesmoke;
@@ -44,238 +49,257 @@
         @include sm {
           width: 550px;
         }
-        @include md{
+        @include md {
           width: 911px;
           height: 580px;
         }
-        @include lg{
+        @include lg {
           width: 1215px;
           height: 430px;
         }
-        @include xl{
+        @include xl {
           width: 100%;
         }
       }
-      .slogan2{
+      .slogan2 {
         width: 100%;
         // margin: auto;
-        .slogan_text2{
-          h1{
+        .slogan_text2 {
+          h1 {
             font-size: 45px;
-            font-family: 'Satisfy', cursive;
-            @include md{
-              font-size: 75px;
+            font-family: "Satisfy", cursive;
+            @include md {
+              font-size: 80px;
             }
           }
         }
-        }
       }
     }
   }
+}
 
-  #second {
-    a{
-      text-decoration: none;
-    }
-    width: 100%;
+#second {
+  a {
+    text-decoration: none;
+  }
+  width: 100%;
+  height: 400px;
+  background: #c8a27a;
+  @include md {
+    height: 200px;
+  }
+  .row {
     height: 400px;
-    background: #c8a27a;
     @include md {
       height: 200px;
     }
-    .row {
-      height: 400px;
-      @include md {
-        height: 200px;
-      }
-      .col-6 {
-        height: 200px;
-      }
-      .home_col {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .bean {
-          width: 45%;
-          object-fit: cover;
-          @include md {
-            width: 45%;
-            margin-top: 10%;
-          }
-        }
-        .bean:hover {
-          width: 55%;
-          object-fit: cover;
-          @include md {
-            width: 55%;
-          }
-        }
-        .bean_name{
-          color: black;
-          margin-top: 10px;
-          @include md{
-            margin-top: 0px;
-            font-size: 18px;
-          }
-        }
-        .powder {
-          width: 80%;
-          @include md {
-            width: 90%;
-          }
-        }
-        .powder:hover {
-          width: 90%;
-          object-fit: cover;
-          @include md {
-            width: 100%;
-          }
-        }
-        .powder_name{
-          color: black;
-          margin-top: 10px;
-          @include md{
-            font-size: 18px;
-          }
-        }
-        .capsule {
-          width: 55%;
-          object-fit: cover;
-          @include md{
-            width: 50%;
-            margin-top: 5%;
-          }
-        }
-        .capsule:hover {
-          width: 65%;
-          object-fit: cover;
-          @include md{
-            width: 60%;
-          }
-        }
-        .capsule_name{
-          color: black;
-          margin-top: 10px;
-          @include md{
-            font-size: 18px;
-          }
-        }
-        .machine {
-          width: 50%;
-          object-fit: cover;
-          @include md{
-            margin-top: 10px;
-            width: 30%;
-          }
-        }
-        .machine:hover{
-          width: 60%;
-          object-fit: cover;
-          @include md{
-            width: 40%;
-          }
-        }
-        .machine_name{
-          color: black;
-          @include md{
-            font-size: 18px;
-          }
-        }
-      }
+    .col-6 {
+      height: 200px;
     }
-  }
-
-  #third {
-    padding-top: 100px;
-    .third_news {
+    .home_col {
       display: flex;
       justify-content: center;
       align-items: center;
+      .bean {
+        width: 45%;
+        object-fit: cover;
+        @include md {
+          width: 45%;
+          margin-top: 10%;
+        }
+      }
+      .bean:hover {
+        width: 55%;
+        object-fit: cover;
+        @include md {
+          width: 55%;
+        }
+      }
+      .bean_name {
+        color: black;
+        margin-top: 10px;
+        @include md {
+          margin-top: 0px;
+          font-size: 18px;
+        }
+      }
+      .powder {
+        width: 80%;
+        @include md {
+          width: 90%;
+        }
+      }
+      .powder:hover {
+        width: 90%;
+        object-fit: cover;
+        @include md {
+          width: 100%;
+        }
+      }
+      .powder_name {
+        color: black;
+        margin-top: 10px;
+        @include md {
+          font-size: 18px;
+        }
+      }
+      .capsule {
+        width: 55%;
+        object-fit: cover;
+        @include md {
+          width: 50%;
+          margin-top: 5%;
+        }
+      }
+      .capsule:hover {
+        width: 65%;
+        object-fit: cover;
+        @include md {
+          width: 60%;
+        }
+      }
+      .capsule_name {
+        color: black;
+        margin-top: 10px;
+        @include md {
+          font-size: 18px;
+        }
+      }
+      .machine {
+        width: 50%;
+        object-fit: cover;
+        @include md {
+          margin-top: 10px;
+          width: 30%;
+        }
+      }
+      .machine:hover {
+        width: 60%;
+        object-fit: cover;
+        @include md {
+          width: 40%;
+        }
+      }
+      .machine_name {
+        color: black;
+        @include md {
+          font-size: 18px;
+        }
+      }
     }
   }
+}
 
-  #fourth {
-    margin-top: 75px;
+#third {
+  padding-top: 100px;
+  .third_news {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+#fourth {
+  margin-top: 75px;
+  .describe {
+    width: 450px;
+    margin: auto;
+    h1 {
+      span {
+        color: #774936;
+        @include md {
+          font-size: 30px;
+        }
+      }
+      @include md {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+#fifth {
+  margin-top: 75px;
+  .map {
+    .mail {
+      .v-input__slot {
+        padding: 0;
+        .v-text-field__slot {
+          background-color: aliceblue;
+          position: relative;
+          border-radius: 5px 0 0 5px;
+          .v-label {
+            font-size: 20px;
+            text-align: center;
+            position: absolute;
+            left: 10px;
+            top: 1%;
+          }
+        }
+      }
+    }
+    .subscribe{
+      .v-btn:not(.v-btn--round).v-size--default{
+        height: 56px;
+      }
+    }
+  }
+}
+
+#sixth {
+  .swiper_col {
+    .newProducts {
+      font-size: 40px;
+    }
+    .products_swiper {
+      height: 480px;
+      @include sm {
+        height: 380px;
+      }
+      a {
+        text-decoration: none;
+      }
+      .products_name {
+        font-size: 20px;
+      }
+      .powder_img,
+      .capsule_img {
+        width: 400px;
+        height: 356px;
+        @include sm {
+          height: 231px;
+        }
+        @include md {
+          height: 236px;
+        }
+        @include lg {
+          height: 231px;
+        }
+        @include xl {
+          height: 202px;
+        }
+      }
+    }
+    .products_btn {
+      font-weight: 700;
+    }
+  }
+}
+
+#seventh {
+  padding-top: 100px;
+  .home_intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     .describe {
       width: 450px;
       margin: auto;
-      h1{
-        span{
-          color:#774936;
-          @include md{
-            font-size: 30px;
-          }
-        }
+      h1 {
         @include md {
-          font-size: 24px;
+          font-size: 28px;
         }
       }
     }
   }
-
-  #fifth{
-    margin-top: 75px;
-    .map{
-      .mail{
-        .v-input__slot{
-          padding: 0;
-          .v-text-field__slot{
-            background-color: aliceblue;
-          }
-        }
-      }
-    }
-  }
-
-  #sixth{
-    .swiper_col{
-      .newProducts{
-        font-size: 40px;
-      }
-      .products_swiper{
-        height:480px;
-        @include sm{
-          height: 380px;
-        }
-        a{
-          text-decoration: none;
-        }
-        .products_name{
-          font-size: 20px;
-        }
-        .powder_img,
-        .capsule_img{
-          width: 400px;
-          height: 356px;
-          @include sm{
-            height: 231px;
-          }
-          @include md{
-            height: 236px;
-          }
-        }
-      }
-      .products_btn{
-        font-weight: 700;
-      }
-    }
-  }
-
-  #seventh {
-    padding-top: 100px;
-    .home_intro {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .describe {
-        width: 450px;
-        margin: auto;
-        h1{
-          @include md {
-            font-size: 28px;
-          }
-        }
-      }
-    }
-  }
-
+}

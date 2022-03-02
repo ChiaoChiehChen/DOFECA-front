@@ -11,6 +11,7 @@
     "lint-linux": "export SET NODE_OPTIONS=--openssl-legacy-provider; vue-cli-service lint"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "validator": "^13.7.0",
@@ -20,6 +21,7 @@
     "vue-img-inputer": "^2.1.6",
     "vue-router": "^3.2.0",
     "vue-sweetalert2": "^5.0.2",
+    "vue-wow": "^1.2.0",
     "vuetify": "^2.4.0",
     "vuex": "^3.4.0",
     "vuex-persistedstate": "^3.2.1"

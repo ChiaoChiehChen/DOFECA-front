@@ -16,7 +16,7 @@
     </v-container>
     <v-container>
       <v-row>
-        <v-col cols="12">
+        <v-col  cols="12">
           <v-data-table class="lesson_table mt-10" :headers="headers" :items="lessons">
             <template v-slot:item.lessonName="{ item }">
               <!-- {{item}} -->
@@ -31,7 +31,6 @@
           </v-data-table>
         </v-col>
       </v-row>
-      <v-btn to="/newsForm"></v-btn>
     </v-container>
   </v-main>
 </template>
@@ -55,6 +54,8 @@ export default {
   },
   methods: {
     signUp (item) {
+      // console.log(item)
+      console.log(this.lessons)
       if (this.user.token.length === 0) {
         this.$swal({
           icon: 'error',
@@ -63,7 +64,7 @@ export default {
         })
         this.$route.push('/')
       } else {
-        this.$store.commit('user/lessons', this.lessons)
+        this.$store.commit('user/lessons', item)
         this.$router.push('/newsForm')
       }
     }

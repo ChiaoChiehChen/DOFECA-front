@@ -13,7 +13,8 @@ export default () => {
       applicant: '',
       phone: '',
       email: '',
-      memo: ''
+      memo: '',
+      _id: ''
     }
   }
 }

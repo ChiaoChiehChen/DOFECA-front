@@ -132,7 +132,8 @@ export default {
         applicant: '',
         phone: '',
         email: '',
-        memo: ''
+        memo: '',
+        _id: ''
       },
       rules: [v => !!v || '必填欄位'],
       emailRules: [
@@ -143,11 +144,17 @@ export default {
   },
   methods: {
     async applyForm () {
+      console.log(this.form)
       try {
         await this.api.post('/lessons/apply', this.form, {
           headers: {
             authorization: 'Bearer ' + this.user.token
           }
+        })
+        this.$swal.fire({
+          icon: 'success',
+          title: '成功',
+          text: '報名成功'
         })
         this.$router.push('/member/memberLessons')
       } catch (error) {
@@ -161,14 +168,15 @@ export default {
     }
   },
   async created () {
-    console.log(111)
-    console.log(this.user.lessons)
+    // console.log(111)
+    // console.log(this.user.lessons)
     this.form.lessonName = this.user.lessons.lessonName
     this.form.price = this.user.lessons.price
     this.form.applicant = this.user.lessons.applicant
     this.form.phone = this.user.lessons.phone
     this.form.email = this.user.lessons.email
     this.form.memo = this.user.lessons.memo
+    this.form._id = this.user.lessons._id
   }
 }
 </script>

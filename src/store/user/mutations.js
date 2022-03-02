@@ -38,7 +38,7 @@ export const lessons = (state, data) => {
   state.lessons.date = data.date
   state.lessons.applicant = data.applicant
   state.lessons.phone = data.phone
-  state.lessons.l = data.email
   state.lessons.email = data.email
   state.lessons.memo = data.memo
+  state.lessons._id = data._id
 }

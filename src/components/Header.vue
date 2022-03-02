@@ -1,14 +1,14 @@
 <template>
-  <nav>
+  <nav id="header">
     <v-app-bar
-      id="header"
-      class="px-md-10"
+      class="appBar px-md-10"
       app
       color="white"
       height="80"
       prominent
-      elevate-on-scroll
+      elevation="6"
     >
+          <!-- elevate-on-scroll -->
       <v-app-bar-nav-icon class="hidden-md-and-up mt-3" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <router-link to="/">
@@ -25,11 +25,12 @@
           <!-- <v-btn class="nav-btn subtitle-1" color="#9d8460" plain text to="/products">Products</v-btn> -->
           <span class="headertitle">
             <v-hover v-slot="{ hover }">
-              <v-btn text to="/about">
+              <v-btn text @click.native.stop.prevent="">
                 About Us
                 <v-expand-transition>
                   <v-btn
                     text
+                    to="/about"
                     v-if="hover"
                     class="d-flex transition-fast-in-fast-out btn_reveal"
                   >關於我們</v-btn>

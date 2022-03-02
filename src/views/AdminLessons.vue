@@ -53,6 +53,12 @@
                       append-icon="mdi-currency-twd"
                     ></v-text-field>
                   </v-col>
+                  <v-col cols="12">
+                    <v-radio-group v-model="form.sell" row>
+                      <v-radio label="上架" :value="true"></v-radio>
+                      <v-radio label="下架" :value="false"></v-radio>
+                    </v-radio-group>
+                  </v-col>
 
                 </v-row>
               </v-form>
@@ -84,11 +90,14 @@
       產品列表
       <v-data-table class="lesson_table mt-10" :headers="headers" :items="lessons">
         <template v-slot:item.lessonName="{ item }">
-        <!-- {{item}} -->
+        {{item}}
           <div>{{item.lessonName}}</div>
         </template>
         <template v-slot:item.price="{ item }">
           <div>NT${{item.price}}</div>
+        </template>
+        <template v-slot:item.sell="{ item }">
+          <div class=text-center>{{ item.sell ? 'V' : '' }}</div>
         </template>
         <template v-slot:item.action="{ item }">
           <v-btn color="#f7b267"  @click="delLesson(item._id)">刪除</v-btn>
@@ -104,12 +113,14 @@ export default {
     return {
       headers: [
         { text: '課程名稱', value: 'lessonName' },
-        { text: '產品價錢', value: 'price' },
+        { text: '課程價錢', value: 'price' },
+        { text: '課程操作', value: 'sell' },
         { text: '產品操作', value: 'action' }
       ],
       form: {
         lessonName: '',
         price: null,
+        sell: false,
         _id: '',
         index: -1
       },
@@ -140,13 +151,6 @@ export default {
         return
       }
       this.btnSubmitting = true
-      // 建立FormData物件
-      // const fd = new FormData()
-      // for (const key in this.form) {
-      //   if (key !== '_id') {
-      //     fd.append(key, this.form[key])
-      //   }
-      // }
       try {
         if (this.form._id.length === 0) {
           const { data } = await this.api.post('/lessons', this.form, {
@@ -220,7 +224,7 @@ export default {
   async created () {
     // 元件建立時，抓目前商品
     try {
-      const { data } = await this.api.get('/lessons/', {
+      const { data } = await this.api.get('/lessons/allLessons', {
         headers: {
           authorization: 'Bearer ' + this.user.token
         }
@@ -232,7 +236,7 @@ export default {
       this.$swal({
         icon: 'error',
         title: '錯誤',
-        text: '取得商品失敗'
+        text: '取得文章失敗'
       })
     }
   }
