@@ -6,9 +6,10 @@
       color="white"
       height="80"
       prominent
-      elevation="6"
+      elevate-on-scroll
     >
           <!-- elevate-on-scroll -->
+                <!-- elevation="6" -->
       <v-app-bar-nav-icon class="hidden-md-and-up mt-3" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
       <router-link to="/">
@@ -72,7 +73,7 @@
       <v-spacer></v-spacer>
 
       <!-- 登入前 -->
-      <v-menu open-on-hover bottom offset-y v-if="!user.isLogin">
+      <v-menu  bottom offset-y v-if="!user.isLogin">
         <template v-slot:activator="{ on, attrs }">
           <v-btn class="header_icon mt-3 hidden-md-and-down" icon v-bind="attrs" v-on="on">
             <v-icon>mdi-account</v-icon>
