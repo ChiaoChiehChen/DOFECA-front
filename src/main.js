@@ -15,7 +15,11 @@ import 'vue-img-inputer/dist/index.css'
 import 'animate.css/source/animate.css'
 // import 'animate.css'
 import VueWow from 'vue-wow'
+import VueGtag from 'vue-gtag'
 
+Vue.use(VueGtag, {
+  config: { id: 'G-VQ4YTPQT7Z' }
+})
 Vue.use(VueWow)
 Vue.component('ImgInputer', ImgInputer)
 Vue.use(VueSweetalert2)
