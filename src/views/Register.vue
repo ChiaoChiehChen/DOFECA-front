@@ -2,7 +2,7 @@
   <v-main id="register">
     <v-container class="reg_con">
       <h1 class="text-center">Join us!</h1>
-      <v-row width="400" class="mt-10  ">
+      <v-row width="400" class="mt-md-5  ">
         <v-col class="d-flex justify-center align-center" cols="12">
           <v-hover>
             <template v-slot:default="{ hover }">
@@ -50,7 +50,7 @@
                       required
                     ></v-text-field>
                     <v-card-actions class="d-flex justify-center align-center">
-                      <v-btn class="mt-5" color="brown darken-1"
+                      <v-btn class="mt-5 mt-md-2" color="brown darken-1"
                       type="submit" plain>Sign Up</v-btn>
                     </v-card-actions>
                   </v-form>

@@ -72,7 +72,7 @@
       <u-animate-container>
         <u-animate
           name="fadeIn"
-          delay="1s"
+          delay="0s"
           duration="5s"
           :iteration="1"
           :offset="0"
@@ -115,7 +115,7 @@
           <u-animate-container>
             <u-animate
               name="fadeIn"
-              delay="2s"
+              delay="1s"
               duration="5s"
               :iteration="1"
               :offset="0"
@@ -136,13 +136,15 @@
           </u-animate-container>
         </v-col>
         <v-col cols="12" md="6" order-md="1">
-          <video
-            src="../assets/production ID_4795016.mp4"
-            width="100%"
-            controls
-            loop
-            autoplay="autoplay"
-          ></video>
+          <div class="video">
+            <video
+              src="../assets/production ID_4795016.mp4"
+              width="100%"
+              controls
+              loop
+              autoplay="autoplay"
+            ></video>
+          </div>
         </v-col>
       </v-row>
     </v-container>
@@ -296,6 +298,9 @@
           </u-animate-container>
         </v-col>
       </v-row>
+      <div class="cafeBg">
+        <img src="../assets/beanbg1.png" alt="">
+      </div>
     </v-container>
 
     <v-container id="seventh">
@@ -303,22 +308,94 @@
         <v-col class="text-center" cols="12" md="6" order-md="2">
           <v-row>
             <v-col cols="4">
-              <v-img src="../assets/coffeeshop4.jpeg"></v-img>
+              <u-animate-container>
+                <u-animate
+                  name="fadeIn"
+                  delay="1s"
+                  duration="5s"
+                  :iteration="1"
+                  :offset="0"
+                  animateClass="animated"
+                  :begin="false"
+                >
+                  <v-img src="../assets/coffeeshop4.jpeg"></v-img>
+                </u-animate>
+              </u-animate-container>
             </v-col>
             <v-col cols="8">
-              <v-img src="../assets/coffeeshop6.jpeg"></v-img>
+              <u-animate-container>
+                <u-animate
+                  name="fadeIn"
+                  delay="2s"
+                  duration="5s"
+                  :iteration="1"
+                  :offset="0"
+                  animateClass="animated"
+                  :begin="false"
+                >
+                  <v-img src="../assets/coffeeshop6.jpeg"></v-img>
+                </u-animate>
+              </u-animate-container>
             </v-col>
             <v-col cols="8">
-              <v-img src="../assets/coffee9.jpg"></v-img>
+              <u-animate-container>
+                <u-animate
+                  name="fadeIn"
+                  delay="3s"
+                  duration="5s"
+                  :iteration="1"
+                  :offset="0"
+                  animateClass="animated"
+                  :begin="false"
+                >
+                  <v-img src="../assets/coffee9.jpg"></v-img>
+                </u-animate>
+              </u-animate-container>
             </v-col>
             <v-col cols="4">
-              <v-img src="../assets/coffeeshop5.jpeg"></v-img>
+              <u-animate-container>
+                <u-animate
+                  name="fadeIn"
+                  delay="1s"
+                  duration="5s"
+                  :iteration="1"
+                  :offset="0"
+                  animateClass="animated"
+                  :begin="false"
+                >
+                  <v-img src="../assets/coffeeshop5.jpeg"></v-img>
+                </u-animate>
+              </u-animate-container>
             </v-col>
             <v-col cols="6">
-              <v-img src="../assets/coffeeshop2.jpeg"></v-img>
+              <u-animate-container>
+                <u-animate
+                  name="fadeIn"
+                  delay="3s"
+                  duration="5s"
+                  :iteration="1"
+                  :offset="0"
+                  animateClass="animated"
+                  :begin="false"
+                >
+                  <v-img src="../assets/coffeeshop2.jpeg"></v-img>
+                </u-animate>
+              </u-animate-container>
             </v-col>
             <v-col cols="6">
+              <u-animate-container>
+                <u-animate
+                  name="fadeIn"
+                  delay="2s"
+                  duration="5s"
+                  :iteration="1"
+                  :offset="0"
+                  animateClass="animated"
+                  :begin="false"
+                >
               <v-img src="../assets/coffeeshop7.jpg"></v-img>
+              </u-animate>
+              </u-animate-container>
             </v-col>
           </v-row>
         </v-col>

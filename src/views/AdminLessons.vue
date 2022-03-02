@@ -87,17 +87,17 @@
           </v-card>
         </v-dialog>
       </v-row>
-      產品列表
+
       <v-data-table class="lesson_table mt-10" :headers="headers" :items="lessons">
         <template v-slot:item.lessonName="{ item }">
-        {{item}}
+        <!-- {{item}} -->
           <div>{{item.lessonName}}</div>
         </template>
         <template v-slot:item.price="{ item }">
           <div>NT${{item.price}}</div>
         </template>
         <template v-slot:item.sell="{ item }">
-          <div class=text-center>{{ item.sell ? 'V' : '' }}</div>
+          <div> {{ item.sell ? 'V' : '' }}</div>
         </template>
         <template v-slot:item.action="{ item }">
           <v-btn color="#f7b267"  @click="delLesson(item._id)">刪除</v-btn>

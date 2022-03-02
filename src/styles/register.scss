@@ -4,6 +4,9 @@
   background-size: cover;
   // height: calc(100vh - 80px);
   margin-top: 40px;
+  @include md {
+    margin-top: 20px;
+  }
   .reg_con{
     height: 100%;
     h1{

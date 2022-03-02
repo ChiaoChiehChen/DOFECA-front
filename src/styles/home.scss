@@ -76,7 +76,7 @@
       }
     }
   }
-}
+
 
 #second {
   a {
@@ -86,12 +86,12 @@
   height: 400px;
   background: #c8a27a;
   @include md {
-    height: 200px;
+    height: 250px;
   }
   .row {
     height: 400px;
     @include md {
-      height: 200px;
+      height: 250px;
     }
     .col-6 {
       height: 200px;
@@ -168,14 +168,21 @@
       .machine {
         width: 50%;
         object-fit: cover;
+        @include sm{
+          width: 45%;
+          object-fit: cover;
+        }
         @include md {
           margin-top: 10px;
-          width: 30%;
+          width: 35%;
         }
       }
       .machine:hover {
         width: 60%;
         object-fit: cover;
+        @include sm {
+          width: 50%;
+        }
         @include md {
           width: 40%;
         }
@@ -190,50 +197,70 @@
   }
 }
 
-#third {
-  padding-top: 100px;
-  .third_news {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
+// #third {
+//   padding-top: 100px;
+//   .third_news {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+// }
 
 #fourth {
-  margin-top: 75px;
+  margin-top: 50px;
+  @include md{
+    margin-top: 85px;
+  }
   .describe {
     width: 450px;
     margin: auto;
     h1 {
+      font-size: 20px;
+      @include sm {
+        font-size: 24px;
+      }
+      @include lg {
+        font-size: 24px;
+      }
       span {
+        font-size: 24px;
         color: #774936;
-        @include md {
+        @include sm {
+          font-size: 28px;
+        }
+        @include lg {
           font-size: 30px;
         }
       }
-      @include md {
-        font-size: 24px;
-      }
+
     }
+  }
+  .video{
+    margin-top: 50px;
+  @include md{
+    margin-top: 0px;
+  }
   }
 }
 
 #fifth {
-  margin-top: 75px;
+  margin-top: 50px;
+  @include md{
+    margin-top: 80px;
+  }
   .map {
     .mail {
       .v-input__slot {
         padding: 0;
         .v-text-field__slot {
           background-color: aliceblue;
-          position: relative;
+
           border-radius: 5px 0 0 5px;
           .v-label {
             font-size: 20px;
             text-align: center;
-            position: absolute;
-            left: 10px;
-            top: 1%;
+            padding-left: 20px;
+
           }
         }
       }
@@ -284,7 +311,20 @@
       font-weight: 700;
     }
   }
+  .cafeBg{
+    position: relative;
+    img{
+      width: 40%;
+      position: absolute;
+      top:-358px;
+      left: -108px;
+      opacity: 0.6;
+      transform: rotate(-27deg);
+    }
+  }
 }
+
+
 
 #seventh {
   padding-top: 100px;
@@ -297,9 +337,10 @@
       margin: auto;
       h1 {
         @include md {
-          font-size: 28px;
+          font-size: 26px;
         }
       }
     }
   }
+}
 }

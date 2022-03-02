@@ -3,21 +3,45 @@
     <v-container>
       <v-row>
         <v-col>
-          <v-img src="../assets/lessons.png"></v-img>
+          <u-animate-container>
+            <u-animate
+              name="fadeIn"
+              delay="1s"
+              duration="5s"
+              :iteration="1"
+              :offset="0"
+              animateClass="animated"
+              :begin="false"
+            >
+              <v-img src="../assets/lessons.png"></v-img>
+            </u-animate>
+          </u-animate-container>
         </v-col>
         <v-col cols="12" class="mt-5">
-          <div class="activity">
-            <p class="text-center">想更了解一杯咖啡，如何從產區生豆變成香氣四溢的熟豆嗎?</p>
-            <p class="text-center">淺顯易懂的基礎烘豆課程，讓您快速了解烘豆原理</p>
-          </div>
+          <u-animate-container>
+            <u-animate
+              name="fadeIn"
+              delay="1s"
+              duration="5s"
+              :iteration="1"
+              :offset="0"
+              animateClass="animated"
+              :begin="false"
+            >
+              <div class="activity">
+                <p class="text-center">想更了解一杯咖啡，如何從產區生豆變成香氣四溢的熟豆嗎?</p>
+                <p class="text-center">淺顯易懂的基礎烘豆課程，讓您快速了解烘豆原理</p>
+              </div>
+            </u-animate>
+          </u-animate-container>
         </v-col>
         <v-col></v-col>
       </v-row>
     </v-container>
     <v-container>
-      <v-row>
-        <v-col  cols="12">
-          <v-data-table class="lesson_table mt-10" :headers="headers" :items="lessons">
+      <v-row justify="center" align="center">
+        <v-col cols="12">
+          <v-data-table class="lesson_table mt-5" :headers="headers" :items="lessons">
             <template v-slot:item.lessonName="{ item }">
               <!-- {{item}} -->
               <div>{{ item.lessonName }}</div>

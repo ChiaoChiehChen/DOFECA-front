@@ -3,12 +3,12 @@
     <v-container>
       <h1 class="text-center">Welcome back</h1>
       <div class="login_con">
-        <v-row class="mt-md-5 mt-lg-16">
+        <v-row class="mt-md-5">
           <v-col cols="12" md="0" lg="2"></v-col>
           <v-col class="d-flex justify-center align-center" cols="12" md="6" lg="4">
             <v-hover>
               <template v-slot:default="{ hover }">
-                <v-card class="rounded-lg" width="400" height="450" :elevation="hover ? 10 : 2">
+                <v-card class="rounded-lg" width="400" height="420" :elevation="hover ? 10 : 2">
                   <v-card-title>
                     <h1 class="mx-auto mt-5">Login</h1>
                   </v-card-title>
@@ -38,7 +38,7 @@
                         required
                       ></v-text-field>
                       <v-card-actions class="d-flex justify-center align-center">
-                        <v-btn class="login_btn mt-10" type="submit" plain>
+                        <v-btn class="login_btn mt-10 mt-md-5" type="submit" plain>
                           <span></span>
                           <span></span>
                           Login

@@ -1,7 +1,8 @@
 <template>
-  <nav id="header">
+  <nav >
     <v-app-bar
-      class="appBar px-md-10"
+      id="header"
+      class="px-md-10"
       app
       color="white"
       height="80"
@@ -73,7 +74,7 @@
       <v-spacer></v-spacer>
 
       <!-- 登入前 -->
-      <v-menu  bottom offset-y v-if="!user.isLogin">
+      <v-menu open-on-hover bottom offset-y v-if="!user.isLogin">
         <template v-slot:activator="{ on, attrs }">
           <v-btn class="header_icon mt-3 hidden-md-and-down" icon v-bind="attrs" v-on="on">
             <v-icon>mdi-account</v-icon>
