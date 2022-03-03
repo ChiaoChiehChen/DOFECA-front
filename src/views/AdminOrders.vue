@@ -56,7 +56,7 @@ export default {
         }
       })
       // this.orders = data.result
-      // console.log(data.result)
+      console.log(data.result)
       this.orders = data.result.map((order) => {
         order.total = order.products.reduce((accumulator, currentValue) => {
           return accumulator + currentValue.quantity * currentValue.product.price
