@@ -418,9 +418,9 @@
             </u-animate-container>
             <u-animate-container>
               <u-animate
-                name="fadeInLeft"
+                name="fadeIn"
                 delay="2s"
-                duration="2s"
+                duration="5s"
                 :iteration="1"
                 :offset="0"
                 animateClass="animated"
